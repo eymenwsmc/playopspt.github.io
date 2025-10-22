@@ -1,64 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eaglercraft 1.7.10</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: "Poppins", sans-serif;
-    }
-    body {
-      background: linear-gradient(135deg, #0a0f1f, #152c4d);
-      color: #fff;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2.8em;
-      margin-bottom: 0.4em;
-    }
-    p {
-      font-size: 1.1em;
-      color: #a9b8d0;
-      margin-bottom: 2em;
-    }
-    .play-btn {
-      background: linear-gradient(90deg, #3b82f6, #2563eb);
-      border: none;
-      color: white;
-      padding: 14px 40px;
-      font-size: 1.2em;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.25s ease;
-      box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
-    }
-    .play-btn:hover {
-      transform: scale(1.05);
-      background: linear-gradient(90deg, #60a5fa, #3b82f6);
-      box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
-    }
-    footer {
-      position: absolute;
-      bottom: 20px;
-      font-size: 0.9em;
-      color: #6b7280;
-    }
-  </style>
+<title>Eaglercraft 1.7.10</title>
+<meta charset="utf-8">
+<style>
+body {
+  background-color: #0d1117;
+  color: white;
+  font-family: Arial;
+  text-align: center;
+}
+h1 {
+  margin-top: 80px;
+  font-size: 36px;
+}
+p {
+  color: #aaa;
+}
+button {
+  background-color: #2d6cdf;
+  border: none;
+  color: white;
+  padding: 12px 28px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #1e4fb3;
+}
+.downloads {
+  margin-top: 60px;
+}
+a.download {
+  display: inline-block;
+  background-color: #2d6cdf;
+  color: white;
+  text-decoration: none;
+  padding: 10px 25px;
+  margin: 6px;
+  border-radius: 4px;
+}
+a.download:hover {
+  background-color: #1e4fb3;
+}
+footer {
+  margin-top: 80px;
+  font-size: 13px;
+  color: #666;
+}
+</style>
 </head>
 <body>
-  <h1>Eaglercraft 1.7.10</h1>
-  <p>Play my Minecraft 1.7.10 port in your browser instantly!</p>
-  <button class="play-btn" onclick="window.location.href='1.7.10.html'">Play Now</button>
-  <footer>© 2025 Eymen Demez 😝</footer>
+
+<h1>Eaglercraft 1.7.10</h1>
+<p>Play my Minecraft 1.7.10 port instantly in your browser!</p>
+
+<button onclick="window.location.href='1.7.10.html'">Play Now</button>
+
+<div class="downloads">
+  <h2>Downloads</h2>
+  <p>Download the HTML versions below:</p>
+  <a href="1.7.10.html" download class="download">Download 1.7.10</a>
+  <a href="classic.html" download class="download">Download Classic</a>
+</div>
+
+
 </body>
 </html>
