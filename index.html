@@ -1,70 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Eaglercraft 1.7.10</title>
-<meta charset="utf-8">
-<style>
-body {
-  background-color: #0d1117;
-  color: white;
-  font-family: Arial;
-  text-align: center;
-}
-h1 {
-  margin-top: 80px;
-  font-size: 36px;
-}
-p {
-  color: #aaa;
-}
-button {
-  background-color: #2d6cdf;
-  border: none;
-  color: white;
-  padding: 12px 28px;
-  font-size: 16px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-button:hover {
-  background-color: #1e4fb3;
-}
-.downloads {
-  margin-top: 60px;
-}
-a.download {
-  display: inline-block;
-  background-color: #2d6cdf;
-  color: white;
-  text-decoration: none;
-  padding: 10px 25px;
-  margin: 6px;
-  border-radius: 4px;
-}
-a.download:hover {
-  background-color: #1e4fb3;
-}
-footer {
-  margin-top: 80px;
-  font-size: 13px;
-  color: #666;
-}
-</style>
+  <title>Eaglercraft 1.7.10 & 1.14</title>
+  <meta charset="utf-8">
+  <style>
+    body {
+      background-color: #0d1117;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    h1 {
+      margin-top: 50px;
+      font-size: 38px;
+    }
+    p {
+      color: #cccccc;
+    }
+    button {
+      background-color: #2d6cdf;
+      border: 2px solid #1e4fb3;
+      color: white;
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
+    }
+    button:hover {
+      background-color: #1e4fb3;
+    }
+    .btn-new {
+      background-color: #28a745;
+      border-color: #1e7e34;
+    }
+    .btn-new:hover {
+      background-color: #1e7e34;
+    }
+    .downloads {
+      margin-top: 40px;
+      padding: 20px;
+      border: 2px dashed #444;
+      display: inline-block;
+      text-align: left; 
+    }
+    a.download {
+      display: inline-block;
+      background-color: #333;
+      border: 1px solid #555;
+      color: white;
+      text-decoration: none;
+      padding: 8px 15px;
+      margin: 5px 0px;
+    }
+    a.download:hover {
+      background-color: #555;
+    }
+  </style>
 </head>
 <body>
 
-<h1>Eaglercraft 1.7.10</h1>
-<p>Play my Minecraft 1.7.10 port instantly in your browser!</p>
+  <h1>Eaglercraft Web</h1>
+  <p>Play eagler 1.14 and 1.7</p>
+  
+  <br>
 
-<button onclick="window.location.href='1.7.10.html'">Play Now</button>
+  <button onclick="window.location.href='1.7.10.html'">Play 1.7.10</button>
+  <button class="btn-new" onclick="window.location.href='1.14.html'">Play 1.14 (NEW!)</button>
 
-<div class="downloads">
-  <h2>Downloads</h2>
-  <p>Download the HTML versions below:</p>
-  <a href="1.7.10.html" download class="download">Download 1.7.10 en_US</a>
-  <a href="classic.html" download class="download">Download 1.7.10 international</a>
-</div>
+  <br><br>
 
+  <div class="downloads">
+    <h2 style="margin-top: 0; text-align: center;">Offline Downloads</h2>
+    <p style="text-align: center;">If you want to play offline, download the HTML files below:</p>
+    
+    <b>1.7.10 Versions:</b><br>
+    <a href="1.7.10.html" download class="download">Download 1.7.10 (en_US)</a><br>
+    <a href="classic.html" download class="download">Download 1.7.10 (International)</a>
+    
+    <br><br>
+    
+    <b>1.14 Versions:</b><br>
+    <a href="1.14.html" download class="download">Download 1.14</a>
+  </div>
+
+  <br><br><br>
+  
+  <div style="font-size: 13px; color: #666;">
+    made by eymenwsmc
+  </div>
 
 </body>
 </html>
