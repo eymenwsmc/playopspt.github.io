@@ -124,6 +124,7 @@
       font-size: 14px;
       font-weight: 500;
       transition: background-color 0.2s, border-color 0.2s;
+      cursor: pointer;
     }
 
     a.download:hover {
@@ -144,7 +145,7 @@
   <div class="container">
     <h1>Eaglercraft</h1>
     <p class="subtitle">Play Eaglercraft 1.7.10 and 1.14</p>
-    
+
     <div class="play-buttons">
       <button onclick="window.location.href='1.7.10.html'">Play 1.7.10</button>
       <button class="btn-new" onclick="window.location.href='./javascript/index.html'">Play 1.14</button>
@@ -152,8 +153,8 @@
 
     <div class="downloads-box">
       <h2>Offline Downloads</h2>
-      <p style="color: #8b949e; font-size: 14px; margin-top: -5px;">Right-click and save or download to play offline anytime.</p>
-      
+      <p style="color: #8b949e; font-size: 14px; margin-top: -5px;">Click to download files offline anytime.</p>
+
       <div class="download-section">
         <h3>1.7.10 Versions</h3>
         <div class="links-grid">
@@ -161,18 +162,54 @@
           <a href="classic.html" download class="download">Download 1.7.10 (International)</a>
         </div>
       </div>
-      
+
       <div class="download-section">
         <h3>1.14 Versions</h3>
         <div class="links-grid">
-<a href="https://raw.githubusercontent.com/eymenwsmc/offline/refs/heads/main/Eaglercraft_1.14.4_WASM-GC_Offline_Download.html" target="_blank" class="download">Download 1.14 WASM (compressed sounds) 33MB</a>
-</div>
+          <!-- JavaScript fonksiyonu ile tetiklenen indirme -->
+          <a onclick="downloadFile(event)" class="download">Download 1.14 WASM (compressed sounds) 33MB</a>
+        </div>
+      </div>
     </div>
 
     <footer>
       made by eymenwsmc
     </footer>
   </div>
+
+  <script>
+    async function downloadFile(e) {
+      e.preventDefault();
+      const url = "https://raw.githubusercontent.com/eymenwsmc/offline/refs/heads/main/Eaglercraft_1.14.4_WASM-GC_Offline_Download.html";
+      const fileName = "Eaglercraft_1.14.4_WASM-GC_Offline_Download.html";
+
+      const target = e.currentTarget;
+      const originalText = target.innerText;
+      target.innerText = "holdon";
+
+      try {
+        const response = await fetch(url);
+        const blob = await response.blob();
+        const blobUrl = window.URL.createObjectURL(blob);
+
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = blobUrl;
+        a.download = fileName;
+
+        document.body.appendChild(a);
+        a.click();
+
+        window.URL.revokeObjectURL(blobUrl);
+        document.body.removeChild(a);
+        target.innerText = originalText;
+      } catch (error) {
+        alert("try again");
+        target.innerText = originalText;
+        window.open(url, '_blank');
+      }
+    }
+  </script>
 
 </body>
 </html>
