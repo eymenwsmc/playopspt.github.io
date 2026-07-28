@@ -32,7 +32,6 @@
       position: relative;
     }
 
-    /* Top Social Links Container */
     .social-links {
       display: flex;
       justify-content: center;
@@ -178,6 +177,50 @@
       border-color: #58a6ff;
     }
 
+    /* Archived Dropdown Style */
+    .archived-dropdown {
+      margin-top: 25px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 15px;
+    }
+
+    .archived-dropdown summary {
+      color: #8b949e;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      padding: 6px 0;
+      transition: color 0.2s ease;
+      outline: none;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .archived-dropdown summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .archived-dropdown summary:hover {
+      color: var(--text-bright);
+    }
+
+    .archived-dropdown summary::after {
+      content: "▼";
+      font-size: 10px;
+      transition: transform 0.2s ease;
+    }
+
+    .archived-dropdown[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    .archived-content {
+      margin-top: 15px;
+    }
+
     footer {
       margin-top: 60px;
       font-size: 12px;
@@ -190,7 +233,6 @@
 
   <div class="container">
 
-    <!-- Discord & GitHub Links -->
     <div class="social-links">
       <a href="https://discord.gg/2TGCmPqBRx" target="_blank" rel="noopener noreferrer" class="social-icon discord" title="Discord Server">
         <svg viewBox="0 0 127.14 96.36">
@@ -227,9 +269,21 @@
       <div class="download-section">
         <h3>1.14 Versions</h3>
         <div class="links-grid">
-          <a onclick="downloadFile(event)" class="download">Download 1.14 WASM (compressed sounds) 33MB</a>
+          <a onclick="downloadGithubFile(event, 'https://raw.githubusercontent.com/eymenwsmc/offline/refs/heads/main/Eaglercraft_1.14.4_WASM-GC_Offline_Download.html', 'Eaglercraft_1.14.4_WASM-GC_Offline_Download.html')" class="download">Download 1.14 WASM (compressed sounds) 33MB</a>
         </div>
       </div>
+
+      <details class="archived-dropdown">
+        <summary>Archived Versions</summary>
+        <div class="archived-content">
+          <div class="links-grid">
+            <a onclick="downloadGithubFile(event, 'https://raw.githubusercontent.com/eymenwsmc/1.4.7-builds/refs/heads/main/Eaglercraft_1.4.7_OPTIFINE_HD_D5_WASM.html', 'Eaglercraft_1.4.7_Offline.html')" class="download">Download 1.4.7 Offline</a>
+            <a onclick="downloadGithubFile(event, 'https://github.com/eymenwsmc/Beta-1.5_01/raw/refs/heads/main/EaglercraftX_1.8_Offline_en_US.html', 'Eaglercraft_Beta_1.5_01_Offline.html')" class="download">Download Beta 1.5 _01 Offline</a>
+            <a onclick="downloadGithubFile(event, 'https://github.com/eymenwsmc/Alpha-1.0.6_03/raw/refs/heads/main/EaglercraftX_1.8_Offline_en_US.html', 'Eaglercraft_Alpha_1.0.6_03_Offline.html')" class="download">Download Alpha 1.0.6_03 Offline</a>
+          </div>
+        </div>
+      </details>
+
     </div>
 
     <footer>
@@ -238,10 +292,8 @@
   </div>
 
   <script>
-    async function downloadFile(e) {
+    async function downloadGithubFile(e, url, fileName) {
       e.preventDefault();
-      const url = "https://raw.githubusercontent.com/eymenwsmc/offline/refs/heads/main/Eaglercraft_1.14.4_WASM-GC_Offline_Download.html";
-      const fileName = "Eaglercraft_1.14.4_WASM-GC_Offline_Download.html";
 
       const target = e.currentTarget;
       const originalText = target.innerText;
@@ -249,6 +301,8 @@
 
       try {
         const response = await fetch(url);
+        if (!response.ok) throw new Error('Net error. Are you sure ur internet is plugged?');
+        
         const blob = await response.blob();
         const blobUrl = window.URL.createObjectURL(blob);
 
