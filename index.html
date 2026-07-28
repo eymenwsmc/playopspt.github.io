@@ -67,12 +67,12 @@
     }
 
     .social-icon.discord:hover {
-      color: #5865F2; /* Discord Brand Color */
+      color: #5865F2;
       border-color: #5865F2;
     }
 
     .social-icon.github:hover {
-      color: #f0f6fc; /* GitHub Accent Color */
+      color: #f0f6fc;
       border-color: #f0f6fc;
     }
 
@@ -159,6 +159,7 @@
     }
 
     a.download {
+      position: relative;
       display: block;
       background-color: var(--bg-color);
       border: 1px solid var(--border-color);
@@ -170,6 +171,19 @@
       font-weight: 500;
       transition: background-color 0.2s, border-color 0.2s;
       cursor: pointer;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    a.download .progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0%;
+      background-color: rgba(35, 134, 54, 0.4);
+      z-index: -1;
+      transition: width 0.1s ease;
     }
 
     a.download:hover {
@@ -177,7 +191,11 @@
       border-color: #58a6ff;
     }
 
-    /* Archived Dropdown Style */
+    a.download.loading {
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
     .archived-dropdown {
       margin-top: 25px;
       border-top: 1px solid var(--border-color);
@@ -269,7 +287,7 @@
       <div class="download-section">
         <h3>1.14 Versions</h3>
         <div class="links-grid">
-          <a onclick="downloadGithubFile(event, 'https://raw.githubusercontent.com/eymenwsmc/offline/refs/heads/main/Eaglercraft_1.14.4_WASM-GC_Offline_Download.html', 'Eaglercraft_1.14.4_WASM-GC_Offline_Download.html')" class="download">Download 1.14 WASM (compressed sounds) 33MB</a>
+          <a onclick="downloadGithubFile(event, 'https://raw.githubusercontent.com/eymenwsmc/offline/refs/heads/main/Eaglercraft_1.14.4_WASM-GC_Offline_Download.html', 'Eaglercraft_1.14.4_WASM-GC_Offline_Download.html')" class="download"><div class="progress-bar"></div><span class="btn-text">Download 1.14 WASM (compressed sounds) 33MB</span></a>
         </div>
       </div>
 
@@ -277,9 +295,9 @@
         <summary>Archived Versions</summary>
         <div class="archived-content">
           <div class="links-grid">
-            <a onclick="downloadGithubFile(event, 'https://raw.githubusercontent.com/eymenwsmc/1.4.7-builds/refs/heads/main/Eaglercraft_1.4.7_OPTIFINE_HD_D5_WASM.html', 'Eaglercraft_1.4.7_Offline.html')" class="download">Download 1.4.7 Offline</a>
-            <a onclick="downloadGithubFile(event, 'https://github.com/eymenwsmc/Beta-1.5_01/raw/refs/heads/main/EaglercraftX_1.8_Offline_en_US.html', 'Eaglercraft_Beta_1.5_01_Offline.html')" class="download">Download Beta 1.5 _01 Offline</a>
-            <a onclick="downloadGithubFile(event, 'https://github.com/eymenwsmc/Alpha-1.0.6_03/raw/refs/heads/main/EaglercraftX_1.8_Offline_en_US.html', 'Eaglercraft_Alpha_1.0.6_03_Offline.html')" class="download">Download Alpha 1.0.6_03 Offline</a>
+            <a onclick="downloadGithubFile(event, 'https://raw.githubusercontent.com/eymenwsmc/1.4.7-builds/refs/heads/main/Eaglercraft_1.4.7_OPTIFINE_HD_D5_WASM.html', 'Eaglercraft_1.4.7_Offline.html')" class="download"><div class="progress-bar"></div><span class="btn-text">Download 1.4.7 Offline</span></a>
+            <a onclick="downloadGithubFile(event, 'https://github.com/eymenwsmc/Beta-1.5_01/raw/refs/heads/main/EaglercraftX_1.8_Offline_en_US.html', 'Eaglercraft_Beta_1.5_01_Offline.html')" class="download"><div class="progress-bar"></div><span class="btn-text">Download Beta 1.5 _01 Offline</span></a>
+            <a onclick="downloadGithubFile(event, 'https://github.com/eymenwsmc/Alpha-1.0.6_03/raw/refs/heads/main/EaglercraftX_1.8_Offline_en_US.html', 'Eaglercraft_Alpha_1.0.6_03_Offline.html')" class="download"><div class="progress-bar"></div><span class="btn-text">Download Alpha 1.0.6_03 Offline</span></a>
           </div>
         </div>
       </details>
@@ -292,36 +310,70 @@
   </div>
 
   <script>
-    async function downloadGithubFile(e, url, fileName) {
+    function downloadGithubFile(e, url, fileName) {
       e.preventDefault();
 
       const target = e.currentTarget;
-      const originalText = target.innerText;
-      target.innerText = "holdon";
+      
+      if (target.classList.contains('loading')) return;
 
-      try {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error('Net error. Are you sure ur internet is plugged?');
-        
-        const blob = await response.blob();
-        const blobUrl = window.URL.createObjectURL(blob);
+      const textSpan = target.querySelector('.btn-text');
+      const progressBar = target.querySelector('.progress-bar');
+      const originalText = textSpan.innerText;
 
-        const a = document.createElement('a');
-        a.style.display = 'none';
-        a.href = blobUrl;
-        a.download = fileName;
+      target.classList.add('loading');
+      textSpan.innerText = "Starting...";
+      if (progressBar) progressBar.style.width = "0%";
 
-        document.body.appendChild(a);
-        a.click();
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.responseType = 'blob';
 
-        window.URL.revokeObjectURL(blobUrl);
-        document.body.removeChild(a);
-        target.innerText = originalText;
-      } catch (error) {
-        alert("try again");
-        target.innerText = originalText;
-        window.open(url, '_blank');
+      xhr.onprogress = function (event) {
+        if (event.lengthComputable) {
+          const percent = Math.round((event.loaded / event.total) * 100);
+          textSpan.innerText = "Downloading... %" + percent;
+          if (progressBar) progressBar.style.width = percent + "%";
+        } else {
+          textSpan.innerText = "Downloading...";
+        }
+      };
+
+      function resetState() {
+        textSpan.innerText = originalText;
+        if (progressBar) progressBar.style.width = "0%";
+        target.classList.remove('loading');
       }
+
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          const blob = xhr.response;
+          const blobUrl = window.URL.createObjectURL(blob);
+
+          const a = document.createElement('a');
+          a.style.display = 'none';
+          a.href = blobUrl;
+          a.download = fileName;
+
+          document.body.appendChild(a);
+          a.click();
+
+          window.URL.revokeObjectURL(blobUrl);
+          document.body.removeChild(a);
+        } else {
+          alert("try again");
+          window.open(url, '_blank');
+        }
+        resetState();
+      };
+
+      xhr.onerror = function () {
+        alert("try again");
+        resetState();
+        window.open(url, '_blank');
+      };
+
+      xhr.send();
     }
   </script>
 
