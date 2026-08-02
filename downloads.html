@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Downloads · Eaglercraft</title>
+  <style>
+    :root { --ink:#f6f0dc; --muted:#ada796; --canvas:#101711; --panel:rgba(25,34,25,.88); --line:rgba(231,222,188,.14); --moss:#9aba49; --moss-bright:#bbdf5f; }
+    * { box-sizing:border-box; }
+    body { background:radial-gradient(circle at 50% -20%,rgba(134,179,100,.28),transparent 38rem),#101711; color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,sans-serif; margin:0; min-height:100vh; padding:28px 20px 48px; }
+    .container { margin:0 auto; max-width:800px; }
+    header { align-items:center; display:flex; justify-content:space-between; margin-bottom:72px; }
+    .wordmark { color:var(--ink); font-family:Georgia,serif; font-size:15px; font-weight:bold; letter-spacing:.12em; text-decoration:none; text-transform:uppercase; }
+    .wordmark span { color:var(--moss-bright); }
+    .back { color:var(--muted); font-size:13px; font-weight:700; text-decoration:none; }
+    .back:hover { color:var(--ink); }
+    .hero { margin:0 auto 34px; max-width:600px; text-align:center; }
+    .eyebrow { color:var(--moss-bright); font-size:11px; font-weight:750; letter-spacing:.18em; margin:0 0 17px; text-transform:uppercase; }
+    h1 { font-family:Georgia,serif; font-size:clamp(3rem,8vw,4.7rem); font-weight:400; letter-spacing:-.06em; line-height:.9; margin:0; }
+    .intro { color:var(--muted); line-height:1.55; margin:22px auto 0; max-width:470px; }
+    .downloads-box { backdrop-filter:blur(10px); background:var(--panel); border:1px solid var(--line); border-radius:12px; box-shadow:0 20px 70px rgba(0,0,0,.2); padding:30px; }
+    .download-section { margin-top:24px; }
+    .download-section:first-child { margin-top:0; }
+    h2 { color:var(--muted); font-size:11px; font-weight:750; letter-spacing:.08em; margin:0 0 10px; text-transform:uppercase; }
+    .links-grid { display:flex; flex-direction:column; gap:9px; }
+    a.download { align-items:center; background:rgba(5,10,6,.3); border:1px solid var(--line); border-radius:7px; color:var(--ink); display:flex; font-size:14px; font-weight:600; justify-content:space-between; overflow:hidden; padding:14px 15px; position:relative; text-decoration:none; transition:background .2s,border-color .2s,transform .2s; z-index:1; }
+    a.download::after { color:var(--moss-bright); content:"→"; font-size:18px; margin-left:16px; }
+    a.download:hover { background:rgba(255,255,255,.055); border-color:rgba(187,223,95,.55); transform:translateX(3px); }
+    .progress-bar { background:rgba(154,186,73,.27); height:100%; left:0; position:absolute; top:0; transition:width .1s ease; width:0; z-index:-1; }
+    a.download.loading { opacity:.8; pointer-events:none; }
+    details { border-top:1px solid var(--line); margin-top:25px; padding-top:15px; }
+    summary { color:var(--muted); cursor:pointer; font-size:14px; font-weight:600; list-style:none; }
+    summary::-webkit-details-marker { display:none; }
+    summary::after { content:"▼"; float:right; font-size:10px; }
+    details[open] summary::after { transform:rotate(180deg); }
+    .archived-content { margin-top:15px; }
+    .notice { color:var(--muted); font-size:12px; line-height:1.55; margin:24px 4px 0; text-align:center; }
+    a:focus-visible, summary:focus-visible { outline:2px solid var(--moss-bright); outline-offset:3px; }
+    @media (max-width:560px) { body { padding:20px 14px 35px; } header { margin-bottom:52px; } .downloads-box { padding:22px 17px; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="wordmark" href="index.html">Eagler<span>craft</span></a>
+      <a class="back" href="index.html">← Back to play</a>
+    </header>
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">Offline clients</p>
+        <h1 id="page-title">Downloads</h1>
+        <p class="intro">Save an offline build for the times you want your world close at hand. Large downloads can take a moment to start.</p>
+      </section>
+      <section class="downloads-box" aria-label="Offline downloads">
+        <div class="download-section">
+          <h2>1.7.10 versions</h2>
+          <div class="links-grid">
+            <a href="1.7.10.html" download class="download">Download 1.7.10 (en_US)</a>
+            <a href="classic.html" download class="download">Download 1.7.10 (International)</a>
+          </div>
+        </div>
+        <div class="download-section">
+          <h2>1.14 version</h2>
+          <div class="links-grid">
+            <a href="https://raw.githubusercontent.com/eymenwsmc/offline/refs/heads/main/Eaglercraft_1.14.4_WASM-GC_Offline_Download.html" onclick="downloadGithubFile(event, 'https://raw.githubusercontent.com/eymenwsmc/offline/refs/heads/main/Eaglercraft_1.14.4_WASM-GC_Offline_Download.html', 'Eaglercraft_1.14.4_WASM-GC_Offline_Download.html')" class="download"><div class="progress-bar"></div><span class="btn-text">Download 1.14 WASM · compressed sounds · 33 MB</span></a>
+          </div>
+        </div>
+        <details>
+          <summary>Archived versions</summary>
+          <div class="archived-content links-grid">
+            <a id="download-147" href="https://raw.githubusercontent.com/eymenwsmc/1.4.7-builds/refs/heads/main/Eaglercraft_1.4.7_OPTIFINE_HD_D5_WASM.html" onclick="downloadGithubFile(event, 'https://raw.githubusercontent.com/eymenwsmc/1.4.7-builds/refs/heads/main/Eaglercraft_1.4.7_OPTIFINE_HD_D5_WASM.html', 'Eaglercraft_1.4.7_Offline.html')" class="download"><div class="progress-bar"></div><span class="btn-text">Download 1.4.7 Offline</span></a>
+            <a id="download-beta-1501" href="https://github.com/eymenwsmc/Beta-1.5_01/raw/refs/heads/main/EaglercraftX_1.8_Offline_en_US.html" onclick="downloadGithubFile(event, 'https://github.com/eymenwsmc/Beta-1.5_01/raw/refs/heads/main/EaglercraftX_1.8_Offline_en_US.html', 'Eaglercraft_Beta_1.5_01_Offline.html')" class="download"><div class="progress-bar"></div><span class="btn-text">Download Beta 1.5_01 Offline</span></a>
+            <a id="download-alpha-10603" href="https://github.com/eymenwsmc/Alpha-1.0.6_03/raw/refs/heads/main/EaglercraftX_1.8_Offline_en_US.html" onclick="downloadGithubFile(event, 'https://github.com/eymenwsmc/Alpha-1.0.6_03/raw/refs/heads/main/EaglercraftX_1.8_Offline_en_US.html', 'Eaglercraft_Alpha_1.0.6_03_Offline.html')" class="download"><div class="progress-bar"></div><span class="btn-text">Download Alpha 1.0.6_03 Offline</span></a>
+          </div>
+        </details>
+      </section>
+      <p class="notice">Keep offline files somewhere safe, such as a dedicated folder or USB drive.</p>
+    </main>
+  </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.location.hash.startsWith('#download-')) document.querySelector('details')?.setAttribute('open', '');
+    });
+
+    function downloadGithubFile(e, url, fileName) {
+      e.preventDefault();
+      const target = e.currentTarget;
+      if (target.classList.contains('loading')) return;
+      const textSpan = target.querySelector('.btn-text');
+      const progressBar = target.querySelector('.progress-bar');
+      const originalText = textSpan.innerText;
+      target.classList.add('loading'); textSpan.innerText = 'Starting…';
+      const resetState = () => { textSpan.innerText = originalText; progressBar.style.width = '0%'; target.classList.remove('loading'); };
+      const xhr = new XMLHttpRequest(); xhr.open('GET', url, true); xhr.responseType = 'blob';
+      xhr.onprogress = event => { if (event.lengthComputable) { const percent = Math.round(event.loaded / event.total * 100); textSpan.innerText = `Downloading… ${percent}%`; progressBar.style.width = `${percent}%`; } else textSpan.innerText = 'Downloading…'; };
+      xhr.onload = () => { if (xhr.status === 200) { const blobUrl = URL.createObjectURL(xhr.response); const link = document.createElement('a'); link.href = blobUrl; link.download = fileName; link.click(); setTimeout(() => URL.revokeObjectURL(blobUrl), 1000); } else window.open(url, '_blank', 'noopener'); resetState(); };
+      xhr.onerror = () => { window.open(url, '_blank', 'noopener'); resetState(); };
+      xhr.send();
+    }
+  </script>
+</body>
+</html>
