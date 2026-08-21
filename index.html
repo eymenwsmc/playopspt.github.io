@@ -63,10 +63,16 @@
       top: -27vw;
       left: 50%;
       transform: translateX(-50%);
-      box-shadow: 0 0 0 46px rgba(187, 223, 95, .025), 0 0 0 92px rgba(187, 223, 95, .018);
+      box-shadow:
+        0 0 0 46px rgba(187, 223, 95, .025),
+        0 0 0 92px rgba(187, 223, 95, .018);
     }
 
-    .container { max-width: 920px; margin: 0 auto; position: relative; }
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      position: relative;
+    }
 
     .masthead { 
       display: flex; 
@@ -76,8 +82,19 @@
       gap: 16px;
     }
 
-    .wordmark { color: var(--ink); font-family: Georgia, serif; font-size: 15px; font-weight: bold; letter-spacing: .12em; text-decoration: none; text-transform: uppercase; }
-    .wordmark span { color: var(--moss-bright); }
+    .wordmark {
+      color: var(--ink);
+      font-family: Georgia, serif;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: .12em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .wordmark span {
+      color: var(--moss-bright);
+    }
 
     .nav-group {
       display: flex;
@@ -85,9 +102,24 @@
       gap: 20px;
     }
 
-    .site-nav { display: flex; gap: 20px; align-items: center; }
-    .site-nav a { color: var(--muted); font-size: 13px; font-weight: 700; letter-spacing: .04em; text-decoration: none; transition: color 0.2s; }
-    .site-nav a:hover { color: var(--ink); }
+    .site-nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .site-nav a {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .site-nav a:hover {
+      color: var(--ink);
+    }
 
     .social-links {
       display: flex;
@@ -99,10 +131,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 35px; height: 35px;
+      width: 35px;
+      height: 35px;
       background-color: rgba(255,255,255,.035);
       border: 1px solid var(--line);
-      border-radius: 50%; color: var(--muted);
+      border-radius: 50%;
+      color: var(--muted);
       text-decoration: none;
       transition: all 0.2s ease;
     }
@@ -115,7 +149,8 @@
 
     .social-icon:hover {
       background-color: rgba(255,255,255,.08);
-      color: var(--ink); border-color: rgba(246,240,220,.38);
+      color: var(--ink);
+      border-color: rgba(246,240,220,.38);
       transform: translateY(-2px);
     }
 
@@ -124,23 +159,139 @@
       border-color: #f0f6fc;
     }
 
-    .hero { max-width: 670px; margin: 0 auto; text-align: center; }
-    .eyebrow { color: var(--moss-bright); font-size: 11px; font-weight: 750; letter-spacing: .18em; margin: 0 0 17px; text-transform: uppercase; }
-    h1 { color: var(--ink); font-family: Georgia, "Times New Roman", serif; font-size: clamp(3.6rem, 10vw, 6.2rem); font-weight: 400; line-height: .88; letter-spacing: -.07em; margin: 0; }
-
-    .subtitle {
-      color: var(--muted); font-size: 17px; line-height: 1.55;
-      margin: 24px auto 34px; max-width: 470px;
+    .hero {
+      max-width: 670px;
+      margin: 0 auto;
+      text-align: center;
     }
 
-    .version-picker { margin: 0 auto 72px; max-width: 390px; text-align: left; }
-    .version-picker label { color: var(--moss-bright); display: block; font-size: 11px; font-weight: 750; letter-spacing: .14em; margin-bottom: 9px; text-transform: uppercase; }
-    .version-picker select { appearance: none; background: rgba(25,34,25,.88) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23bbdf5f' d='m4 6 4 4 4-4z'/%3E%3C/svg%3E") no-repeat right 16px center; border: 1px solid rgba(187,223,95,.42); border-radius: 6px; color: var(--ink); cursor: pointer; font: 700 15px/1.2 inherit; padding: 16px 46px 16px 16px; width: 100%; }
-    .version-picker select:hover { border-color: var(--moss-bright); }
-    .version-picker select:focus-visible { outline: 2px solid var(--moss-bright); outline-offset: 3px; }
-    .version-picker option { background: #172016; color: var(--ink); }
-    .version-action { align-items: center; background: var(--moss); border: 1px solid var(--moss); border-radius: 5px; color: #12200d; display: flex; font-size: 14px; font-weight: 800; justify-content: center; margin-top: 10px; min-height: 49px; text-decoration: none; transition: background .2s ease, transform .2s ease; }
-    .version-action:hover { background: var(--moss-bright); transform: translateY(-2px); }
+    /* New update announcement */
+    .update-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 18px;
+      padding: 7px 13px 7px 8px;
+      border: 1px solid rgba(187, 223, 95, .30);
+      border-radius: 999px;
+      background: rgba(187, 223, 95, .07);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .015em;
+      box-shadow:
+        0 0 24px rgba(187, 223, 95, .06),
+        inset 0 1px rgba(255,255,255,.025);
+    }
+
+    .update-badge .new {
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: var(--moss-bright);
+      color: #172016;
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .update-badge strong {
+      color: var(--moss-bright);
+      font-weight: 800;
+    }
+
+    .eyebrow {
+      color: var(--moss-bright);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: .18em;
+      margin: 0 0 17px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3.6rem, 10vw, 6.2rem);
+      font-weight: 400;
+      line-height: .88;
+      letter-spacing: -.07em;
+      margin: 0;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+      margin: 24px auto 34px;
+      max-width: 470px;
+    }
+
+    .version-picker {
+      margin: 0 auto 72px;
+      max-width: 390px;
+      text-align: left;
+    }
+
+    .version-picker label {
+      color: var(--moss-bright);
+      display: block;
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: .14em;
+      margin-bottom: 9px;
+      text-transform: uppercase;
+    }
+
+    .version-picker select {
+      appearance: none;
+      background:
+        rgba(25,34,25,.88)
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%23bbdf5f' d='m4 6 4 4 4-4z'/%3E%3C/svg%3E")
+        no-repeat right 16px center;
+      border: 1px solid rgba(187,223,95,.42);
+      border-radius: 6px;
+      color: var(--ink);
+      cursor: pointer;
+      font: 700 15px/1.2 inherit;
+      padding: 16px 46px 16px 16px;
+      width: 100%;
+    }
+
+    .version-picker select:hover {
+      border-color: var(--moss-bright);
+    }
+
+    .version-picker select:focus-visible {
+      outline: 2px solid var(--moss-bright);
+      outline-offset: 3px;
+    }
+
+    .version-picker option {
+      background: #172016;
+      color: var(--ink);
+    }
+
+    .version-action {
+      align-items: center;
+      background: var(--moss);
+      border: 1px solid var(--moss);
+      border-radius: 5px;
+      color: #12200d;
+      display: flex;
+      font-size: 14px;
+      font-weight: 800;
+      justify-content: center;
+      margin-top: 10px;
+      min-height: 49px;
+      text-decoration: none;
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .version-action:hover {
+      background: var(--moss-bright);
+      transform: translateY(-2px);
+    }
 
     .site-info {
       max-width: 720px;
@@ -153,7 +304,8 @@
       color: var(--muted);
     }
 
-    .site-info h3, .site-info h4 {
+    .site-info h3,
+    .site-info h4 {
       color: var(--ink);
       margin: 15px 0 6px 0;
       font-size: 14px;
@@ -179,43 +331,71 @@
     }
 
     footer {
-      margin-top: 32px; font-size: 11px; color: #7f8879;
+      margin-top: 32px;
+      font-size: 11px;
+      color: #7f8879;
       letter-spacing: 0.5px;
       text-align: center;
     }
 
-    footer span { display: block; margin-top: 7px; }
+    footer span {
+      display: block;
+      margin-top: 7px;
+    }
 
     @media (max-width: 560px) {
-      body { padding: 20px 14px 35px; }
+      body {
+        padding: 20px 14px 35px;
+      }
+
       .masthead { 
         flex-direction: column; 
         margin-bottom: 36px; 
         gap: 14px;
       }
+
       .nav-group {
         width: 100%;
         justify-content: center;
         gap: 16px;
       }
-      .version-picker { margin-bottom: 50px; }
+
+      .version-picker {
+        margin-bottom: 50px;
+      }
+
+      .update-badge {
+        font-size: 11px;
+        gap: 7px;
+        padding-right: 10px;
+      }
     }
   </style>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1739607505559413" crossorigin="anonymous"></script>
 </head>
+
 <body>
 
   <div class="container">
     <header class="masthead">
-      <a class="wordmark" href="index.html" aria-label="Eaglercraft home">Eagler <span>Versions</span></a>
+      <a class="wordmark" href="index.html" aria-label="Eaglercraft home">
+        Eagler <span>Versions</span>
+      </a>
+
       <div class="nav-group">
         <nav class="site-nav" aria-label="Primary navigation">
           <a href="downloads.html">Downloads</a>
           <a href="https://discord.gg/2TGCmPqBRx" target="_blank" rel="noopener noreferrer">Community</a>
           <a href="mailto:demezeydemez@gmail.com">Contact</a>
         </nav>
+
         <div class="social-links" aria-label="Community links">
-          <a href="https://github.com/orgs/Eagler-Versions/repositories" target="_blank" rel="noopener noreferrer" class="social-icon github" title="GitHub Repository">
+          <a
+            href="https://github.com/orgs/Eagler-Versions/repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-icon github"
+            title="GitHub Repository"
+          >
             <svg viewBox="0 0 96 96">
               <path d="M48,0C21.49,0,0,21.49,0,48A48,48,0,0,0,32.83,93.5c2.4.44,3.28-1,3.28-2.31c0-1.14-.04-4.17-.06-8.18c-13.35,2.9-16.17-6.44-16.17-6.44c-2.18-5.54-5.33-7.02-5.33-7.02c-4.36-2.98.33-2.92.33-2.92c4.82.34,7.36,4.95,7.36,4.95c4.28,7.34,11.23,5.22,13.97,3.99c.43-3.1,1.67-5.22,3.04-6.42c-10.66-1.21-21.87-5.33-21.87-23.72c0-5.24,1.87-9.52,4.94-12.88c-.5-1.21-2.14-6.09.47-12.71c0,0,4.03-1.29,13.2,4.92A45.92,45.92,0,0,1,48,22.8c4.08,0,8.2.55,12.03,1.62c9.16-6.21,13.18-4.92,13.18-4.92c2.62,6.62.98,11.5.48,12.71a18.91,18.91,0,0,1,4.96,12.88c0,18.44-11.23,22.5-21.93,23.68c1.72,1.48,3.26,4.4,3.26,8.87c0,6.41-.06,11.58-.06,13.15c0,1.32.86,2.78,3.3,2.3A48,48,0,0,0,96,48C96,21.49,74.51,0,48,0Z"/>
             </svg>
@@ -226,44 +406,88 @@
 
     <main>
       <section class="hero" aria-labelledby="page-title">
+
+        <div class="update-badge">
+          <span class="new">New</span>
+          <span>Added <strong>1.20.6</strong> and <strong>1.14.4 U1</strong>!</span>
+        </div>
+
         <p class="eyebrow">Browser based · play right now</p>
+
         <h1 id="page-title">Eaglercraft</h1>
-        <p class="subtitle">Choose your eagler version and play instantly!</p>
+
+        <p class="subtitle">
+          Choose your eagler version and play instantly!
+        </p>
 
         <div class="version-picker">
           <label for="version-select">Choose a version</label>
+
           <select id="version-select" onchange="updateVersionAction(this)">
-            <option value="./javascript/index.html" selected>Eaglercraft 1.14</option>
+            <option value="./120/index.html" selected>Eaglercraft 1.20.6</option>
+            <option value="./114/index.html">Eaglercraft 1.14.4</option>
             <option value="r1710/">Eaglercraft 1.7.10</option>
             <option value="r147/">Eaglercraft 1.4.7</option>
             <option value="beta6/">Eaglercraft Beta 1.6.4</option>
             <option value="beta/">Eaglercraft Beta 1.5_01</option>
             <option value="alpha/">Eaglercraft Alpha 1.0.6_03</option>
           </select>
-          <a class="version-action" id="version-action" href="./javascript/index.html">Play</a>
+
+          <a
+            class="version-action"
+            id="version-action"
+            href="./120/index.html"
+          >
+            Play
+          </a>
         </div>
       </section>
 
       <section class="site-info">
         <h3>About Eaglercraft Web Projects</h3>
-        <p>Eaglercraft is an open-source web technology implementation that compiles voxel game engines into WebAssembly and JavaScript runtimes. It allows users to play classic multiplayer and singleplayer worlds seamlessly inside HTML5-compliant web browsers without installing native Java executables.</p>
+
+        <p>
+          Eaglercraft is an open-source web technology implementation that compiles voxel game engines into WebAssembly and JavaScript runtimes. It allows users to play classic multiplayer and singleplayer worlds seamlessly inside HTML5-compliant web browsers without installing native Java executables.
+        </p>
 
         <h4>Compatibility & Performance</h4>
-        <p>Our web builds are optimized for lightweight operating systems including ChromeOS, Linux, Windows, and macOS. By using WebGL graphic pipelines and modern browser storage API standards, game states and settings are stored locally within your browser context.</p>
+
+        <p>
+          Our web builds are optimized for lightweight operating systems including ChromeOS, Linux, Windows, and macOS. By using WebGL graphic pipelines and modern browser storage API standards, game states and settings are stored locally within your browser context.
+        </p>
 
         <h4>Privacy Policy & Ads</h4>
-        <p>This website uses cookies to personalize content and serve relevant advertisements through third-party vendors such as Google AdSense.</p>
+
+        <p>
+          This website uses cookies to personalize content and serve relevant advertisements through third-party vendors such as Google AdSense.
+        </p>
+
         <ul>
-          <li>Third-party vendors, including Google, use cookies to serve ads based on prior visits to this website or other sites.</li>
-          <li>Google's use of advertising cookies enables it and its partners to serve ads based on user visits to this site and/or other sites on the Internet.</li>
-          <li>Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</li>
+          <li>
+            Third-party vendors, including Google, use cookies to serve ads based on prior visits to this website or other sites.
+          </li>
+          <li>
+            Google's use of advertising cookies enables it and its partners to serve ads based on user visits to this site and/or other sites on the Internet.
+          </li>
+          <li>
+            Users may opt out of personalized advertising by visiting
+            <a
+              href="https://www.google.com/settings/ads"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Google Ads Settings
+            </a>.
+          </li>
         </ul>
       </section>
     </main>
 
     <footer>
       made by eymenwsmc
-      <span>This website is an independent open-source mirror project and is not affiliated with Mojang AB or Microsoft.</span>
+      <span>
+        This website is an independent open-source mirror project and is not affiliated with Mojang AB or Microsoft.
+      </span>
     </footer>
   </div>
 
