@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Getting Started with Eaglercraft · How to Play in Browser</title>
+  <meta name="description" content="Complete player guide for Eaglercraft. Learn how WebAssembly browser compilation works, how to save worlds, optimize FPS on Chromebooks, and upload custom skins.">
+  <meta name="keywords" content="eaglercraft guide, how to play eaglercraft, eaglercraft chromebook fps, eaglercraft world backup, eaglercraft skins">
+  <meta name="author" content="eymenwsmc">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://eymenwsmc.site/getting-started.html" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1739607505559413" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --bg-dark: #0b0f17;
+      --bg-surface: #111722;
+      --bg-card: #161f2e;
+      --bg-card-hover: #1c283c;
+      --border-subtle: #243044;
+      --border-focus: #38bdf8;
+      --accent-color: #38bdf8;
+      --accent-btn: #0284c7;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 84px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 48px;
+    }
+
+    .brand {
+      text-decoration: none;
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 21px;
+    }
+    .brand span { color: var(--accent-color); }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .nav-links a:hover { color: var(--text-main); }
+    .nav-links a.active { color: var(--accent-color); }
+
+    .hero-guide {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .guide-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+    .hero-guide p {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 56px;
+    }
+
+    .guide-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 32px;
+    }
+
+    h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--accent-btn);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 800;
+      border-radius: 50%;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+
+    ul, ol {
+      color: var(--text-muted);
+      font-size: 15px;
+      padding-left: 24px;
+      margin-bottom: 16px;
+    }
+    li { margin-bottom: 8px; }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg-surface);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 13px;
+      color: var(--accent-color);
+    }
+
+    .tips-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-left: 4px solid var(--accent-color);
+      padding: 16px 20px;
+      border-radius: var(--radius-sm);
+      margin-top: 14px;
+    }
+    .tips-box strong { color: var(--text-main); }
+
+    .btn-action-hub {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent-btn);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .btn-action-hub:hover { background: var(--accent-color); color: #0b0f17; }
+
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 40px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 12px;
+    }
+    .footer-links a { color: var(--text-muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--text-main); }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <header>
+      <nav class="navbar">
+        <a class="brand" href="index.html">EAGLER<span>VERSIONS</span></a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="getting-started.html" class="active">Getting Started</a></li>
+          <li><a href="servers.html">Servers</a></li>
+          <li><a href="changelog.html">Changelog</a></li>
+          <li><a href="downloads.html">Downloads</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="hero-guide">
+        <span class="guide-tag">Knowledge Base & Tutorials</span>
+        <h1>Getting Started with Eaglercraft</h1>
+        <p>Everything you need to know about browser Minecraft: runtime architecture, saving singleplayer worlds, FPS tweaks, and custom skins.</p>
+      </div>
+
+      <div class="guide-grid">
+
+        <!-- Card 1 -->
+        <article class="guide-card">
+          <h2><span class="step-num">1</span> What is Eaglercraft and How Does it Run?</h2>
+          <p>
+            Eaglercraft is an ahead-of-time (AOT) transpiled version of Minecraft created to execute inside modern web browsers. Instead of requiring a Java Runtime Environment (JRE) or desktop installer:
+          </p>
+          <ul>
+            <li><strong>TeaVM & WebAssembly (WASM):</strong> Converts original Java bytecode directly into high-performance WebAssembly binary code or optimized JavaScript.</li>
+            <li><strong>WebGL OpenGL Emulator:</strong> Maps desktop OpenGL 1.2 / 2.1 graphics calls to WebGL shaders, rendering 3D block voxels smoothly on standard graphics hardware.</li>
+            <li><strong>IndexedDB Filesystem:</strong> Simulates a standard disk file structure entirely inside the browser’s sandboxed database.</li>
+          </ul>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="guide-card">
+          <h2><span class="step-num">2</span> How to Save and Backup Singleplayer Worlds</h2>
+          <p>
+            Singleplayer worlds are stored locally in your browser’s <code>IndexedDB</code> storage. While persistent across normal restarts, clearing browser history or site cookies will delete stored worlds.
+          </p>
+          <div class="tips-box">
+            <strong>How to create a safe backup (.epk file):</strong>
+            <ol style="margin-top: 8px; margin-bottom: 0;">
+              <li>Open the <strong>Singleplayer</strong> menu.</li>
+              <li>Select your world and click <strong>Backup / Export</strong>.</li>
+              <li>Save the resulting <code>.epk</code> file to your Google Drive, USB stick, or local hard drive.</li>
+              <li>To restore, click <strong>Import World</strong> and choose your saved <code>.epk</code> backup.</li>
+            </ol>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="guide-card">
+          <h2><span class="step-num">3</span> Chromebook & Low-Spec Performance Optimization</h2>
+          <p>
+            If you are playing on a school Chromebook, Intel Celeron laptop, or older MacBook, follow these settings to double your frame rate (FPS):
+          </p>
+          <ul>
+            <li><strong>Render Distance:</strong> Set to <code>4 Chunks</code> or <code>6 Chunks</code>.</li>
+            <li><strong>Graphics:</strong> Switch from <em>Fancy</em> to <em>Fast</em>.</li>
+            <li><strong>Smooth Lighting:</strong> Turn <code>OFF</code>.</li>
+            <li><strong>Particles:</strong> Set to <code>Decreased</code> or <code>Minimal</code>.</li>
+            <li><strong>Max Framerate:</strong> Set to <code>60 FPS</code> or <code>VSync</code> to prevent CPU thermal throttling.</li>
+          </ul>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="guide-card">
+          <h2><span class="step-num">4</span> Uploading Custom Skins</h2>
+          <p>
+            You don't need an official Mojang account to use custom skins in Eaglercraft.
+          </p>
+          <ul>
+            <li>Go to <strong>Options</strong> → <strong>Edit Skin</strong> in the main menu.</li>
+            <li>Click <strong>Upload Skin</strong> and select any PNG skin image.</li>
+            <li>Both classic <code>64x32</code> format and modern <code>64x64</code> layers (including jackets, hats, and sleeves) are fully supported.</li>
+          </ul>
+          <a href="index.html" class="btn-action-hub">Launch Game Now →</a>
+        </article>
+
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="dmca.html">DMCA Policy</a>
+        <a href="https://github.com/eymenwsmc/playopspt.github.io" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p>Eagler Versions is an independent open-source mirror project. Not affiliated with Mojang AB or Microsoft.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

@@ -4,292 +4,549 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Offline Downloads · Eagler Versions</title>
-  <meta name="description" content="Download offline HTML files for Eaglercraft 1.14, 1.7.10, 1.4.7, and classic versions. Play anywhere without an active internet connection.">
-  <meta name="keywords" content="eaglercraft download, eaglercraft offline html, eaglercraft 1.14 download, eaglercraft 1.7.10 offline">
+  <title>Offline Downloads · Eaglercraft Standalone HTML Clients</title>
+  <meta name="description" content="Download standalone offline HTML client files for Eaglercraft 1.20.6 (pre-release · WASM), 1.14.4 (u1 · WASM), 1.7.10 (u1 · WASM), 1.4.7 (u0 · WASM), Beta (u0 · JS), and Alpha (u0 · JS) versions.">
+  <meta name="keywords" content="eaglercraft download, eaglercraft offline html, eaglercraft 1.20.6 download, eaglercraft 1.14 download, eaglercraft 1.7.10 offline">
   <meta name="author" content="eymenwsmc">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://eymenwsmc.site/downloads.html" />
 
+  <!-- Google Fonts: Outfit, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --ink: #f6f0dc;
-      --muted: #ada796;
-      --canvas: #101711;
-      --panel: rgba(25, 34, 25, .88);
-      --line: rgba(231, 222, 188, .14);
-      --moss: #9aba49;
-      --moss-bright: #bbdf5f;
-      --sky: #8dc0c4;
+      --bg-dark: #0b0f17;
+      --bg-surface: #111722;
+      --bg-card: #161f2e;
+      --bg-card-hover: #1c283c;
+      --border-subtle: #243044;
+      --border-focus: #38bdf8;
+      --accent-color: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --accent-btn: #0284c7;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
-      background: radial-gradient(circle at 50% -20%, rgba(134, 179, 100, .28), transparent 38rem), #101711;
-      color: var(--ink);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
-      margin: 0;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       min-height: 100vh;
-      padding: 28px 20px 48px;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    .container { margin: 0 auto; max-width: 800px; }
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-    header {
-      align-items: center;
+    /* --- Navigation --- */
+    .navbar {
       display: flex;
-      justify-content: space-between;
-      margin-bottom: 72px;
-    }
-
-    .wordmark {
-      color: var(--ink);
-      font-family: Georgia, serif;
-      font-size: 15px;
-      font-weight: bold;
-      letter-spacing: .12em;
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-
-    .wordmark span { color: var(--moss-bright); }
-
-    .back {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .back:hover { color: var(--ink); }
-
-    .hero {
-      margin: 0 auto 34px;
-      max-width: 600px;
-      text-align: center;
-    }
-
-    .eyebrow {
-      color: var(--moss-bright);
-      font-size: 11px;
-      font-weight: 750;
-      letter-spacing: .18em;
-      margin: 0 0 17px;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      font-family: Georgia, serif;
-      font-size: clamp(3rem, 8vw, 4.7rem);
-      font-weight: 400;
-      letter-spacing: -.06em;
-      line-height: .9;
-      margin: 0;
-    }
-
-    .intro {
-      color: var(--muted);
-      line-height: 1.55;
-      margin: 22px auto 0;
-      max-width: 470px;
-    }
-
-    .downloads-box {
-      backdrop-filter: blur(10px);
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      box-shadow: 0 20px 70px rgba(0, 0, 0, .2);
-      padding: 30px;
-    }
-
-    .download-section { margin-top: 24px; }
-    .download-section:first-child { margin-top: 0; }
-
-    h2 {
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 750;
-      letter-spacing: .08em;
-      margin: 0 0 10px;
-      text-transform: uppercase;
-    }
-
-    .links-grid { display: flex; flex-direction: column; gap: 9px; }
-
-    a.download {
       align-items: center;
-      background: rgba(5, 10, 6, .3);
-      border: 1px solid var(--line);
-      border-radius: 7px;
-      color: var(--ink);
-      display: flex;
-      font-size: 14px;
-      font-weight: 600;
       justify-content: space-between;
-      overflow: hidden;
-      padding: 14px 15px;
-      position: relative;
+      height: 84px;
+    }
+
+    .brand {
       text-decoration: none;
-      transition: background .2s, border-color .2s, transform .2s;
-      z-index: 1;
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 21px;
+      letter-spacing: -0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    a.download::after {
-      color: var(--moss-bright);
-      content: "→";
-      font-size: 18px;
-      margin-left: 16px;
+    .brand span {
+      color: var(--accent-color);
     }
 
-    a.download:hover {
-      background: rgba(255, 255, 255, .055);
-      border-color: rgba(187, 223, 95, .55);
-      transform: translateX(3px);
-    }
-
-    .progress-bar {
-      background: rgba(154, 186, 73, .27);
-      height: 100%;
-      left: 0;
-      position: absolute;
-      top: 0;
-      transition: width .1s ease;
-      width: 0;
-      z-index: -1;
-    }
-
-    a.download.loading { opacity: .8; pointer-events: none; }
-
-    details {
-      border-top: 1px solid var(--line);
-      margin-top: 25px;
-      padding-top: 15px;
-    }
-
-    summary {
-      color: var(--muted);
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 600;
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
       list-style: none;
     }
 
-    summary::-webkit-details-marker { display: none; }
-    summary::after { content: "▼"; float: right; font-size: 10px; }
-    details[open] summary::after { transform: rotate(180deg); }
-
-    .archived-content { margin-top: 15px; }
-
-    .info-card {
-      margin-top: 32px;
-      padding-top: 20px;
-      border-top: 1px solid var(--line);
-      font-size: 13px;
-      line-height: 1.6;
-      color: var(--muted);
-      text-align: left;
-    }
-
-    .info-card h3 {
-      color: var(--ink);
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
       font-size: 14px;
-      margin: 0 0 6px 0;
+      font-weight: 600;
+      transition: color 0.15s ease;
     }
 
-    .notice {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.55;
-      margin: 24px 4px 0;
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    .nav-links a.active {
+      color: var(--accent-color);
+    }
+
+    /* --- Hero --- */
+    .hero {
+      padding: 48px 0 36px;
       text-align: center;
     }
 
-    a:focus-visible, summary:focus-visible {
-      outline: 2px solid var(--moss-bright);
-      outline-offset: 3px;
+    .hero-tag {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-color);
+      margin-bottom: 20px;
+      letter-spacing: 0.02em;
     }
 
-    @media (max-width: 560px) {
-      body { padding: 20px 14px 35px; }
-      header { margin-bottom: 52px; }
-      .downloads-box { padding: 22px 17px; }
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* --- Downloads Container --- */
+    .downloads-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      margin-bottom: 48px;
+    }
+
+    .download-group {
+      margin-bottom: 24px;
+    }
+
+    .download-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .group-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-color);
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .download-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.15s ease, background 0.15s ease;
+      z-index: 1;
+    }
+
+    .download-btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-focus);
+    }
+
+    .download-btn-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 2;
+    }
+
+    .download-icon {
+      width: 20px;
+      height: 20px;
+      fill: var(--accent-color);
+      flex-shrink: 0;
+    }
+
+    .download-btn-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-left: 8px;
+    }
+
+    .download-arrow {
+      font-size: 18px;
+      color: var(--accent-color);
+      transition: transform 0.15s ease;
+      z-index: 2;
+    }
+
+    .download-btn:hover .download-arrow {
+      transform: translateX(4px);
+    }
+
+    .progress-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 0%;
+      background: rgba(56, 189, 248, 0.22);
+      transition: width 0.15s ease;
+      z-index: 1;
+    }
+
+    .download-btn.loading {
+      opacity: 0.85;
+      pointer-events: none;
+    }
+
+    /* --- Archived Collapsible --- */
+    details {
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 28px;
+      padding-top: 20px;
+    }
+
+    summary {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      transition: color 0.15s ease;
+    }
+
+    summary:hover {
+      color: var(--text-main);
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "↓";
+      font-size: 16px;
+      color: var(--accent-color);
+      transition: transform 0.2s ease;
+    }
+
+    details[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    .archived-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    /* --- Offline Guide Card --- */
+    .info-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+      margin-top: 32px;
+    }
+
+    .info-card h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+    }
+
+    .info-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .info-card code {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+      color: var(--accent-color);
+    }
+
+    .storage-note {
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 48px;
+    }
+
+    /* --- Footer --- */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 40px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-color);
+    }
+
+    .footer-author {
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 640px) {
+      .downloads-wrapper {
+        padding: 20px;
+      }
+
+      .download-btn {
+        padding: 14px;
+        font-size: 13px;
+      }
+
+      .download-btn-meta {
+        display: none;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
     }
   </style>
 
+  <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1739607505559413" crossorigin="anonymous"></script>
 </head>
 <body>
 
   <div class="container">
+    
+    <!-- Top Navigation -->
     <header>
-      <a class="wordmark" href="index.html">Eagler <span>Versions</span></a>
-      <a class="back" href="index.html">← Back to play</a>
+      <nav class="navbar" aria-label="Main navigation">
+        <a class="brand" href="index.html" aria-label="Eagler Versions Home">
+          EAGLER<span>VERSIONS</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="getting-started.html">Getting Started</a></li>
+          <li><a href="servers.html">Servers</a></li>
+          <li><a href="changelog.html">Changelog</a></li>
+          <li><a href="downloads.html" class="active">Downloads</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main>
+      <!-- Hero -->
       <section class="hero" aria-labelledby="page-title">
-        <p class="eyebrow">Offline downloads</p>
-        <h1 id="page-title">Downloads</h1>
-        <p class="intro">Download standalone HTML files to play offline. Large downloads may take a moment to fetch directly from remote repositories.</p>
+        <div class="hero-tag">Standalone Single-File Packages</div>
+        <h1 id="page-title">Offline HTML Downloads</h1>
+        <p class="hero-desc">
+          Download standalone <code>.html</code> client files. Once saved to your computer, you can double-click and play offline in any browser without an internet connection.
+        </p>
       </section>
 
-      <section class="downloads-box" aria-label="Offline downloads">
-        <div class="download-section">
-          <h2>1.7.10 versions</h2>
-          <div class="links-grid">
-            <a href="1.7.10.html" download class="download">Download 1.7.10 (en_US)</a>
-          </div>
+      <!-- Download Box -->
+      <section class="downloads-wrapper" aria-label="Available Downloads">
+
+        <!-- 1.20.6 Version (pre-release · WASM) -->
+        <div class="download-group">
+          <span class="group-label">Eaglercraft 1.20.6 (pre-release · WASM)</span>
+          <a href="https://raw.githubusercontent.com/eymenwsmc/offline/refs/heads/main/EaglercraftX_1.20.6_WASM-GC_Offline_Download.html" 
+             onclick="downloadGithubFile(event, 'https://raw.githubusercontent.com/eymenwsmc/offline/refs/heads/main/EaglercraftX_1.20.6_WASM-GC_Offline_Download.html', 'EaglercraftX_1.20.6_WASM-GC_Offline_Download.html')" 
+             class="download-btn">
+            <div class="progress-bar"></div>
+            <div class="download-btn-content">
+              <svg class="download-icon" viewBox="0 0 24 24">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+              </svg>
+              <span class="btn-text">Eaglercraft 1.20.6 WASM Offline Client (pre-release)</span>
+              <span class="download-btn-meta">· 53 MB</span>
+            </div>
+            <span class="download-arrow">→</span>
+          </a>
         </div>
 
-        <div class="download-section">
-          <h2>1.14.4 version</h2>
-          <div class="links-grid">
-            <a href="https://raw.githubusercontent.com/eymenwsmc/offline/refs/heads/main/Eaglercraft_1.14.4_WASM-GC_Offline_Download.html" onclick="downloadGithubFile(event, 'https://raw.githubusercontent.com/eymenwsmc/offline/refs/heads/main/Eaglercraft_1.14.4_WASM-GC_Offline_Download.html', 'Eaglercraft_1.14.4_WASM-GC_Offline_Download.html')" class="download">
-              <div class="progress-bar"></div>
-              <span class="btn-text">Download 1.14.4 WASM · compressed sounds · 33 MB</span>
-            </a>
-          </div>
+        <!-- 1.14.4 Version (u1 · WASM) -->
+        <div class="download-group">
+          <span class="group-label">Eaglercraft 1.14.4 (u1 · WASM)</span>
+          <a href="https://raw.githubusercontent.com/eymenwsmc/offline/refs/heads/main/Eaglercraft_1.14.4_WASM-GC_Offline_Download.html" 
+             onclick="downloadGithubFile(event, 'https://raw.githubusercontent.com/eymenwsmc/offline/refs/heads/main/Eaglercraft_1.14.4_WASM-GC_Offline_Download.html', 'Eaglercraft_1.14.4_WASM-GC_Offline_Download.html')" 
+             class="download-btn">
+            <div class="progress-bar"></div>
+            <div class="download-btn-content">
+              <svg class="download-icon" viewBox="0 0 24 24">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+              </svg>
+              <span class="btn-text">Eaglercraft 1.14.4 WASM Offline Client (u1)</span>
+              <span class="download-btn-meta">· 33 MB</span>
+            </div>
+            <span class="download-arrow">→</span>
+          </a>
         </div>
 
-         <div class="download-section">
-          <h2>1.20.6 version</h2>
-          <div class="links-grid">
-            <a href="https://raw.githubusercontent.com/eymenwsmc/offline/refs/heads/main/EaglercraftX_1.20.6_WASM-GC_Offline_Download.html" onclick="downloadGithubFile(event, 'https://raw.githubusercontent.com/eymenwsmc/offline/refs/heads/main/EaglercraftX_1.20.6_WASM-GC_Offline_Download.html', 'EaglercraftX_1.20.6_WASM-GC_Offline_Download.html')" class="download">
-              <div class="progress-bar"></div>
-              <span class="btn-text">Download 1.20.6 WASM · compressed sounds · 53 MB</span>
-            </a>
-          </div>
+        <!-- 1.7.10 Version (u1 · WASM) -->
+        <div class="download-group">
+          <span class="group-label">Eaglercraft 1.7.10 (u1 · WASM)</span>
+          <a href="1.7.10.html" download class="download-btn">
+            <div class="download-btn-content">
+              <svg class="download-icon" viewBox="0 0 24 24">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+              </svg>
+              <span class="btn-text">Eaglercraft 1.7.10 (en_US) Client (u1 · WASM)</span>
+            </div>
+            <span class="download-arrow">→</span>
+          </a>
         </div>
 
+        <!-- Archived Builds -->
         <details>
-          <summary>Archived versions</summary>
-          <div class="archived-content links-grid">
-            <a id="download-147" href="https://raw.githubusercontent.com/eymenwsmc/1.4.7-builds/refs/heads/main/Eaglercraft_1.4.7_OPTIFINE_HD_D5_WASM.html" onclick="downloadGithubFile(event, 'https://raw.githubusercontent.com/eymenwsmc/1.4.7-builds/refs/heads/main/Eaglercraft_1.4.7_OPTIFINE_HD_D5_WASM.html', 'Eaglercraft_1.4.7_Offline.html')" class="download">
+          <summary>Archived & Legacy Builds</summary>
+          <div class="archived-list">
+
+            <!-- 1.4.7 (u0 · WASM) -->
+            <a id="download-147" 
+               href="https://raw.githubusercontent.com/eymenwsmc/1.4.7-builds/refs/heads/main/Eaglercraft_1.4.7_OPTIFINE_HD_D5_WASM.html" 
+               onclick="downloadGithubFile(event, 'https://raw.githubusercontent.com/eymenwsmc/1.4.7-builds/refs/heads/main/Eaglercraft_1.4.7_OPTIFINE_HD_D5_WASM.html', 'Eaglercraft_1.4.7_Offline.html')" 
+               class="download-btn">
               <div class="progress-bar"></div>
-              <span class="btn-text">Download 1.4.7 Offline</span>
+              <div class="download-btn-content">
+                <svg class="download-icon" viewBox="0 0 24 24">
+                  <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                </svg>
+                <span class="btn-text">Eaglercraft 1.4.7 OptiFine HD D5 (u0 · WASM)</span>
+              </div>
+              <span class="download-arrow">→</span>
             </a>
-            <a id="download-beta-1501" href="https://github.com/eymenwsmc/Beta-1.5_01/raw/refs/heads/main/EaglercraftX_1.8_Offline_en_US.html" onclick="downloadGithubFile(event, 'https://github.com/eymenwsmc/Beta-1.5_01/raw/refs/heads/main/EaglercraftX_1.8_Offline_en_US.html', 'Eaglercraft_Beta_1.5_01_Offline.html')" class="download">
+
+            <!-- Beta 1.5_01 (u0 · JS) -->
+            <a id="download-beta-1501" 
+               href="https://github.com/eymenwsmc/Beta-1.5_01/raw/refs/heads/main/EaglercraftX_1.8_Offline_en_US.html" 
+               onclick="downloadGithubFile(event, 'https://github.com/eymenwsmc/Beta-1.5_01/raw/refs/heads/main/EaglercraftX_1.8_Offline_en_US.html', 'Eaglercraft_Beta_1.5_01_Offline.html')" 
+               class="download-btn">
               <div class="progress-bar"></div>
-              <span class="btn-text">Download Beta 1.5_01 Offline</span>
+              <div class="download-btn-content">
+                <svg class="download-icon" viewBox="0 0 24 24">
+                  <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                </svg>
+                <span class="btn-text">Eaglercraft Beta 1.5_01 Client (u0 · JS)</span>
+              </div>
+              <span class="download-arrow">→</span>
             </a>
-            <a id="download-alpha-10603" href="https://github.com/eymenwsmc/Alpha-1.0.6_03/raw/refs/heads/main/EaglercraftX_1.8_Offline_en_US.html" onclick="downloadGithubFile(event, 'https://github.com/eymenwsmc/Alpha-1.0.6_03/raw/refs/heads/main/EaglercraftX_1.8_Offline_en_US.html', 'Eaglercraft_Alpha_1.0.6_03_Offline.html')" class="download">
+
+            <!-- Alpha 1.0.6_03 (u0 · JS) -->
+            <a id="download-alpha-10603" 
+               href="https://github.com/eymenwsmc/Alpha-1.0.6_03/raw/refs/heads/main/EaglercraftX_1.8_Offline_en_US.html" 
+               onclick="downloadGithubFile(event, 'https://github.com/eymenwsmc/Alpha-1.0.6_03/raw/refs/heads/main/EaglercraftX_1.8_Offline_en_US.html', 'Eaglercraft_Alpha_1.0.6_03_Offline.html')" 
+               class="download-btn">
               <div class="progress-bar"></div>
-              <span class="btn-text">Download Alpha 1.0.6_03 Offline</span>
+              <div class="download-btn-content">
+                <svg class="download-icon" viewBox="0 0 24 24">
+                  <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                </svg>
+                <span class="btn-text">Eaglercraft Alpha 1.0.6_03 Client (u0 · JS)</span>
+              </div>
+              <span class="download-arrow">→</span>
             </a>
+
           </div>
         </details>
 
+        <!-- Technical Description -->
         <div class="info-card">
-          <h3>How Standalone HTML Files Work</h3>
-          <p>These offline packages contain embedded client binaries, WebAssembly assets, and texture assets. You can save the <code>.html</code> file directly to your desktop or USB stick and open it with any modern web browser without needing network connectivity.</p>
+          <h3>How Offline HTML Files Work</h3>
+          <p>
+            These packages contain the entire game code, WebAssembly/JavaScript engine, audio, and textures compressed inside a single <code>.html</code> document. You can store the file on a USB flash drive or local drive and open it with Chrome, Firefox, Safari, or Edge without an internet connection.
+          </p>
         </div>
+
       </section>
 
-      <p class="notice">Your worlds/settings will store locally on IndexedDB storage!</p>
+      <p class="storage-note">Worlds and settings automatically persist inside your browser's local IndexedDB storage.</p>
     </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="dmca.html">DMCA Policy</a>
+        <a href="getting-started.html">Getting Started</a>
+        <a href="servers.html">Servers</a>
+        <a href="changelog.html">Changelog</a>
+        <a href="https://github.com/eymenwsmc/playopspt.github.io" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="footer-author">Maintained by eymenwsmc</p>
+      <p>Independent open-source port mirror. Not affiliated with Mojang AB or Microsoft.</p>
+    </footer>
+
   </div>
 
   <script>
@@ -309,11 +566,11 @@
       const originalText = textSpan.innerText;
       
       target.classList.add('loading');
-      textSpan.innerText = 'Starting…';
+      textSpan.innerText = 'Initializing Download…';
       
       const resetState = () => {
         textSpan.innerText = originalText;
-        progressBar.style.width = '0%';
+        if (progressBar) progressBar.style.width = '0%';
         target.classList.remove('loading');
       };
 
@@ -324,10 +581,10 @@
       xhr.onprogress = event => {
         if (event.lengthComputable) {
           const percent = Math.round((event.loaded / event.total) * 100);
-          textSpan.innerText = `Downloading… ${percent}%`;
-          progressBar.style.width = `${percent}%`;
+          textSpan.innerText = `Fetching... ${percent}%`;
+          if (progressBar) progressBar.style.width = `${percent}%`;
         } else {
-          textSpan.innerText = 'Downloading…';
+          textSpan.innerText = 'Fetching...';
         }
       };
 
