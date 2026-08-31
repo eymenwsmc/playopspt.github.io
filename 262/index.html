@@ -3,13 +3,13 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
-	<title>Eaglercraft 26.2 0.4-dev</title>
-	<link rel="icon" type="image/png" href="favicon.png" />
-		<link rel="preload" href="classes.wasm.br?v=d3fdeadf022464ce" as="fetch" type="application/wasm" crossorigin="anonymous" />
-		<link rel="preload" href="mesh-worker.wasm.br?v=d3fdeadf022464ce" as="fetch" type="application/wasm" crossorigin="anonymous" />
-		<link rel="preload" href="server-worker.wasm.br?v=d3fdeadf022464ce" as="fetch" type="application/wasm" crossorigin="anonymous" />
-	<link rel="preload" href="assets.epk?v=d3fdeadf022464ce" as="fetch" crossorigin="anonymous" />
-	<link rel="preload" href="sounds.epk?v=d3fdeadf022464ce" as="fetch" crossorigin="anonymous" />
+	<title>Eaglercraft 26.2 0.5-dev</title>
+	<link rel="icon" type="image/png" href="favicon.png?v=7b6b0f5274dbf69f" />
+		<link rel="preload" href="classes.wasm.br?v=7b6b0f5274dbf69f" as="fetch" type="application/wasm" crossorigin="anonymous" />
+		<link rel="preload" href="mesh-worker.wasm.br?v=7b6b0f5274dbf69f" as="fetch" type="application/wasm" crossorigin="anonymous" />
+		<link rel="preload" href="server-worker.wasm.br?v=7b6b0f5274dbf69f" as="fetch" type="application/wasm" crossorigin="anonymous" />
+	<link rel="preload" href="assets.epk?v=7b6b0f5274dbf69f" as="fetch" crossorigin="anonymous" />
+	<link rel="preload" href="sounds.epk?v=7b6b0f5274dbf69f" as="fetch" crossorigin="anonymous" />
 	<style>
 		#loading_screen {
 			transition: opacity 180ms linear;
@@ -164,7 +164,7 @@
 				window.__eaglerRecoveredCrash = previousReport;
 				var journal = {
 					version: 2,
-					build: "d3fdeadf022464ce",
+					build: "7b6b0f5274dbf69f",
 					sessionId: Date.now().toString(36) + "-" + Math.random().toString(36).slice(2),
 					startedAt: Date.now(),
 					heartbeat: Date.now(),
@@ -402,11 +402,14 @@
 			if (match) return Number(match[1]);
 			return -1;
 		}
+		// The hosted release may point this at a signed bundle on a separate
+		// large-file origin. An empty value keeps the preview download disabled.
+		window.eaglercraftXIwaBundleURL = "https://pub-6efd573bb3804e0ab441fa92524b722a.r2.dev/iwa/eaglercraft-26.2-0.5.0-4939d32ac0fb.swbn";
 		window.eaglercraftXOpts = {
 			container: "game_frame",
 			assetsURI: [
-				{ url: "assets.epk?v=d3fdeadf022464ce", path: "" },
-				{ url: "sounds.epk?v=d3fdeadf022464ce", path: "" }
+				{ url: "assets.epk?v=7b6b0f5274dbf69f", path: "" },
+				{ url: "sounds.epk?v=7b6b0f5274dbf69f", path: "" }
 			],
 			localesURI: "lang/",
 			worldsDB: "worlds",
@@ -444,7 +447,7 @@
 			} catch (e) {}
 		};
 		(function () {
-			var total = Number("32533669") || 0;
+			var total = Number("32533805") || 0;
 			var loadedByUrl = Object.create(null);
 			window.__eaglerAssetDownloadProgress = function (url, loaded) {
 				loadedByUrl[String(url).replace(/[?#].*$/, "")] = Math.max(0, Number(loaded) || 0);
@@ -458,9 +461,9 @@
 			};
 		})();
 	</script>
-	<script type="text/javascript" src="classes.wasm-runtime.js?v=d3fdeadf022464ce"></script>
-	<script type="text/javascript" src="worker-bootstrap.js?v=d3fdeadf022464ce"></script>
-	<script type="module" src="brotli-loader.js?v=003d0eac341dc9a5"></script>
+	<script type="text/javascript" src="classes.wasm-runtime.js?v=7b6b0f5274dbf69f"></script>
+	<script type="text/javascript" src="worker-bootstrap.js?v=7b6b0f5274dbf69f"></script>
+	<script type="module" src="brotli-loader.js?v=7b6b0f5274dbf69f"></script>
 	<script type="module">
 		(async () => {
 			try {
@@ -472,18 +475,18 @@
 					}
 					let module;
 					const meshModulePromise = WebAssembly.compileStreaming(
-							window.__eagFetchBrotliWasm("mesh-worker.wasm.br?v=d3fdeadf022464ce"), { builtins: ["js-string"] }
+							window.__eagFetchBrotliWasm("mesh-worker.wasm.br?v=7b6b0f5274dbf69f"), { builtins: ["js-string"] }
 						).catch(async (meshStreamErr) => {
 							window.__log.push("W:[shell] mesh compileStreaming failed (" + meshStreamErr + "), falling back to byte fetch");
-							const meshResp = await window.__eagFetchBrotliWasm("mesh-worker.wasm.br?v=d3fdeadf022464ce");
+							const meshResp = await window.__eagFetchBrotliWasm("mesh-worker.wasm.br?v=7b6b0f5274dbf69f");
 							return WebAssembly.compile(await meshResp.arrayBuffer(), { builtins: ["js-string"] });
 						});
 					const serverModulePromise = true ? WebAssembly.compileStreaming(
-						window.__eagFetchBrotliWasm("server-worker.wasm.br?v=d3fdeadf022464ce"), { builtins: ["js-string"] }
+						window.__eagFetchBrotliWasm("server-worker.wasm.br?v=7b6b0f5274dbf69f"), { builtins: ["js-string"] }
 					).catch(async (serverStreamErr) => {
 						window.__log.push("W:[shell] server compileStreaming failed (" + serverStreamErr + "), falling back to byte fetch");
 						try {
-							const serverResp = await window.__eagFetchBrotliWasm("server-worker.wasm.br?v=d3fdeadf022464ce");
+							const serverResp = await window.__eagFetchBrotliWasm("server-worker.wasm.br?v=7b6b0f5274dbf69f");
 							return await WebAssembly.compile(await serverResp.arrayBuffer(), { builtins: ["js-string"] });
 						} catch (serverByteErr) {
 							window.__log.push("W:[shell] dedicated server Wasm unavailable (" + serverByteErr + "); using full image for server worker");
@@ -491,11 +494,11 @@
 						}
 					}) : Promise.resolve(null);
 					try {
-						module = await WebAssembly.compileStreaming(window.__eagFetchBrotliWasm("classes.wasm.br?v=d3fdeadf022464ce"), { builtins: ["js-string"] });
+						module = await WebAssembly.compileStreaming(window.__eagFetchBrotliWasm("classes.wasm.br?v=7b6b0f5274dbf69f"), { builtins: ["js-string"] });
 						window.__log.push("L:[shell] wasm compileStreaming path OK");
 					} catch (streamErr) {
 						window.__log.push("L:[shell] compileStreaming failed (" + streamErr + "), falling back to byte fetch");
-						const resp = await window.__eagFetchBrotliWasm("classes.wasm.br?v=d3fdeadf022464ce");
+						const resp = await window.__eagFetchBrotliWasm("classes.wasm.br?v=7b6b0f5274dbf69f");
 						const bytes = await resp.arrayBuffer();
 						window.__log.push("L:[shell] fetched classes.wasm " + bytes.byteLength + " bytes");
 						module = await WebAssembly.compile(bytes, { builtins: ["js-string"] });
@@ -509,8 +512,8 @@
 					window.__log.push(true
 						? "L:[shell] dedicated mesh + server Wasm compiled"
 						: "L:[shell] dedicated mesh Wasm + shared full-image server module compiled");
-					window.__eaglerWasmRuntimeURL = new URL("classes.wasm-runtime.js?v=d3fdeadf022464ce", location.href).href;
-					window.__eaglerWasmWorkerBootstrapURL = new URL("worker-bootstrap.js?v=d3fdeadf022464ce", location.href).href;
+					window.__eaglerWasmRuntimeURL = new URL("classes.wasm-runtime.js?v=7b6b0f5274dbf69f", location.href).href;
+					window.__eaglerWasmWorkerBootstrapURL = new URL("worker-bootstrap.js?v=7b6b0f5274dbf69f", location.href).href;
 					if (typeof window.__eaglerWasmServerWorkerBootstrapURL !== "string") {
 						window.__eaglerWasmServerWorkerBootstrapURL = window.__eaglerWasmWorkerBootstrapURL;
 					}
@@ -521,7 +524,7 @@
 					window.__eaglerWasmModule = null;
 					window.__eaglerMeshWasmModule = null;
 					window.__eaglerServerWasmModule = null;
-					tv = await TeaVM.wasmGC.load("classes.wasm?v=d3fdeadf022464ce", { installImports(i) {} });
+					tv = await TeaVM.wasmGC.load("classes.wasm?v=7b6b0f5274dbf69f", { installImports(i) {} });
 					window.__log.push("L:[shell] wasm compileStreaming path OK");
 				}
 				window.__loaded = true;

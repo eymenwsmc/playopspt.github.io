@@ -6075,6 +6075,8 @@
   "options.directionalAudio.off.tooltip": "Classic Stereo sound.",
   "options.directionalAudio.on.tooltip": "Uses HRTF-based directional audio to improve the simulation of 3D sound. Requires HRTF-compatible audio hardware, and is best experienced with headphones.",
   "options.discrete_mouse_scroll": "Discrete Scrolling",
+  "options.eaglerTouchControls": "Touch Controls",
+  "options.eaglerTouchControls.tooltip": "Shows and uses the on-screen movement and action controls on touch devices. Touch menus and the on-screen keyboard remain available when this is off.",
   "options.entityDistanceScaling": "Entity Distance",
   "options.entityShadows": "Entity Shadows",
   "options.exclusiveFullscreen": "Exclusive Fullscreen",

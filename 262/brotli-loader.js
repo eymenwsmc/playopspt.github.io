@@ -5,7 +5,7 @@ const requests = new Map();
 
 function ensureWorker() {
 	if (decoderWorker) return decoderWorker;
-	decoderWorker = new Worker(new URL("brotli-decoder-worker.js", import.meta.url), {
+	decoderWorker = new Worker(new URL("brotli-decoder-worker.js?v=7b6b0f5274dbf69f", import.meta.url), {
 		type: "module"
 	});
 	decoderWorker.onmessage = function (event) {

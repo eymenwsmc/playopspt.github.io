@@ -1,9 +1,0 @@
-name = "eaglercraft-26-2-client"
-main = "worker.js"
-compatibility_date = "2026-08-10"
-
-[assets]
-directory = "./public"
-binding = "ASSETS"
-html_handling = "auto-trailing-slash"
-not_found_handling = "none"
