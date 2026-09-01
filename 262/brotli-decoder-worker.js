@@ -1,4 +1,4 @@
-import initBrotli, * as brotli from "./brotli_dec_wasm.js?v=7b6b0f5274dbf69f";
+import initBrotli, * as brotli from "./brotli_dec_wasm.js";
 
 const brotliReady = initBrotli().then(() => brotli);
 

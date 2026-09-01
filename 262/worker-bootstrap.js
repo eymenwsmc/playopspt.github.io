@@ -107,7 +107,7 @@
 			}
 			// Single-file builds load the runtime before this script.
 			if (typeof TeaVM === "undefined" || !TeaVM.wasmGC || !TeaVM.wasmGC.defaults) {
-				importScripts(boot.runtime || "classes.wasm-runtime.js?v=7b6b0f5274dbf69f");
+				importScripts(boot.runtime || "classes.wasm-runtime.js");
 			}
 			if (typeof TeaVM === "undefined" || !TeaVM.wasmGC || !TeaVM.wasmGC.defaults) {
 				postBootError("runtime js did not define TeaVM.wasmGC.defaults");
