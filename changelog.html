@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Version Changelog & Release Notes · Eaglercraft</title>
+  <meta name="description" content="Technical changelog, patch notes, and update details for Eaglercraft 1.20.6 (pre-release), 1.14.4 (u1), 1.7.10 (u1), 1.4.7 (u0), Beta, and Alpha browser ports.">
+  <meta name="keywords" content="eaglercraft changelog, eaglercraft updates, eaglercraft 1.20.6 patch notes, eaglercraft wasm release, eaglercraft 1.14 u1">
+  <meta name="author" content="eymenwsmc">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://eymenwsmc.site/changelog.html" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1739607505559413" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --bg-dark: #0b0f17;
+      --bg-surface: #111722;
+      --bg-card: #161f2e;
+      --bg-card-hover: #1c283c;
+      --border-subtle: #243044;
+      --border-focus: #38bdf8;
+      --accent-color: #38bdf8;
+      --accent-btn: #0284c7;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 84px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 48px;
+    }
+
+    .brand {
+      text-decoration: none;
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 21px;
+    }
+    .brand span { color: var(--accent-color); }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .nav-links a:hover { color: var(--text-main); }
+    .nav-links a.active { color: var(--accent-color); }
+
+    .hero-log {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .log-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+    .hero-log p {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .log-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      margin-bottom: 56px;
+    }
+
+    .log-entry {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 32px;
+    }
+
+    .log-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 14px;
+    }
+
+    .log-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .log-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .badge-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-sm);
+    }
+    .badge-prerelease {
+      background: rgba(244, 63, 94, 0.15);
+      color: #fb7185;
+      border: 1px solid rgba(244, 63, 94, 0.35);
+    }
+    .badge-update {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+    }
+    .badge-base {
+      background: rgba(148, 163, 184, 0.12);
+      color: #94a3b8;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+    }
+    .badge-runtime {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+    }
+
+    .log-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .log-desc {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .sub-log-section {
+      margin-top: 20px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+    }
+
+    .sub-log-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    ul {
+      color: var(--text-muted);
+      font-size: 14px;
+      padding-left: 20px;
+    }
+    li { margin-bottom: 6px; }
+
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 40px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .footer-links a { color: var(--text-muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--text-main); }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <header>
+      <nav class="navbar">
+        <a class="brand" href="index.html">EAGLER<span>VERSIONS</span></a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="getting-started.html">Getting Started</a></li>
+          <li><a href="servers.html">Servers</a></li>
+          <li><a href="changelog.html" class="active">Changelog</a></li>
+          <li><a href="downloads.html">Downloads</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="hero-log">
+        <span class="log-tag">Release History</span>
+        <h1>Version Changelog</h1>
+        <p>Technical release notes, WebAssembly compilation details, and feature updates across all Eaglercraft versions.</p>
+      </div>
+
+      <div class="log-timeline">
+
+        <!-- 1.20.6 Entry -->
+        <article class="log-entry">
+          <div class="log-header">
+            <div class="log-title-wrap">
+              <span class="log-title">Eaglercraft 1.20.6</span>
+              <span class="badge-tag badge-prerelease">pre-release</span>
+              <span class="badge-tag badge-runtime">WASM</span>
+            </div>
+            <span class="log-date">First Release</span>
+          </div>
+          <p class="log-desc">
+            First release of Eaglercraft 1.20 compiled to modern WebAssembly. Includes eagler features, optimizations, and many more.
+          </p>
+          <div class="sub-log-section">
+            <h4 class="sub-log-title">Key Highlights</h4>
+            <ul>
+              <li>Optimized 1.20 engine codebase for smooth in-browser execution.</li>
+              <li>Fixed bugs of 1.20 for client-side web compatibility.</li>
+              <li>Got it to work with TeaVM and WebAssembly runtime.</li>
+              <li>WebGL rendering pipeline and modern block/item support.</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 1.14.4 Entry -->
+        <article class="log-entry">
+          <div class="log-header">
+            <div class="log-title-wrap">
+              <span class="log-title">Eaglercraft 1.14.4</span>
+              <span class="badge-tag badge-update">u1</span>
+              <span class="badge-tag badge-runtime">WASM</span>
+            </div>
+            <span class="log-date">Update 1 (u1)</span>
+          </div>
+          <p class="log-desc">
+            Village & Pillage update! 1.14 compiled to WebAssembly. Smooth performance on low-spec hardware and Chromebooks.
+          </p>
+
+          <div class="sub-log-section">
+            <h4 class="sub-log-title">Bug Fixes</h4>
+            <ul>
+              <li>Fixed water color</li>
+              <li>Fixed stats screen crashing the game</li>
+              <li>Fixed villager bug</li>
+              <li>Fixed boat crash</li>
+              <li>Fixed 15th Anniversary cape using wrong file name</li>
+              <li>Fixed banner on shield getting blurry</li>
+              <li>Fixed cobweb holding items on top</li>
+              <li>Fixed Loading Terrain screen to trick peoples mind</li>
+              <li>Fixed selection box making texts blue</li>
+              <li>Fixed cannot sleep on bed</li>
+              <li>Fixed server resource packs not going away</li>
+              <li>Fixed slider on guis not working</li>
+              <li>Fixed collision bug</li>
+              <li>Fixed crystals does not explode on WASM</li>
+              <li>Fixed translations are not coming (some)</li>
+              <li>Fixed datapacks not working</li>
+              <li>Fixed "NNBSP" unicode symbol on world selection</li>
+              <li>Fixed big black chunk bug</li>
+            </ul>
+          </div>
+
+          <div class="sub-log-section">
+            <h4 class="sub-log-title">Added Features</h4>
+            <ul>
+              <li>Added touch support</li>
+              <li>Changed version string to "u1"</li>
+              <li>Optimized entity culling and more render allocates</li>
+              <li>Ported sodium (not fully)</li>
+              <li>Removed herobrine</li>
+              <li>Added Voice client</li>
+              <li>Added import/export</li>
+              <li>Added server notifications</li>
+              <li>Added revoke session token</li>
+              <li>Added profanity filter</li>
+              <li>Added default username note</li>
+              <li>Added world hud/stats hud</li>
+              <li>Added datapacks gui (Edit world screen)</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- 1.7.10 Entry -->
+        <article class="log-entry">
+          <div class="log-header">
+            <div class="log-title-wrap">
+              <span class="log-title">Eaglercraft 1.7.10</span>
+              <span class="badge-tag badge-update">u1</span>
+              <span class="badge-tag badge-runtime">WASM</span>
+            </div>
+            <span class="log-date">Update 1</span>
+          </div>
+          <p class="log-desc" style="margin-bottom: 0;">
+            No changelog info available.
+          </p>
+        </article>
+
+        <!-- 1.4.7 Entry -->
+        <article class="log-entry">
+          <div class="log-header">
+            <div class="log-title-wrap">
+              <span class="log-title">Eaglercraft 1.4.7</span>
+              <span class="badge-tag badge-base">u0</span>
+              <span class="badge-tag badge-runtime">WASM</span>
+            </div>
+            <span class="log-date">Base Release</span>
+          </div>
+          <p class="log-desc" style="margin-bottom: 0;">
+            No changelog info available.
+          </p>
+        </article>
+
+        <!-- Beta 1.6.4 Entry -->
+        <article class="log-entry">
+          <div class="log-header">
+            <div class="log-title-wrap">
+              <span class="log-title">Eaglercraft Beta 1.6.4</span>
+              <span class="badge-tag badge-base">u0</span>
+              <span class="badge-tag badge-base">JS</span>
+            </div>
+            <span class="log-date">Archived Port</span>
+          </div>
+          <p class="log-desc" style="margin-bottom: 0;">
+            No changelog info available.
+          </p>
+        </article>
+
+        <!-- Beta 1.5_01 Entry -->
+        <article class="log-entry">
+          <div class="log-header">
+            <div class="log-title-wrap">
+              <span class="log-title">Eaglercraft Beta 1.5_01</span>
+              <span class="badge-tag badge-base">u0</span>
+              <span class="badge-tag badge-base">JS</span>
+            </div>
+            <span class="log-date">Archived Port</span>
+          </div>
+          <p class="log-desc" style="margin-bottom: 0;">
+            No changelog info available.
+          </p>
+        </article>
+
+        <!-- Alpha 1.0.6_03 Entry -->
+        <article class="log-entry">
+          <div class="log-header">
+            <div class="log-title-wrap">
+              <span class="log-title">Eaglercraft Alpha 1.0.6_03</span>
+              <span class="badge-tag badge-base">u0</span>
+              <span class="badge-tag badge-base">JS</span>
+            </div>
+            <span class="log-date">Archived Port</span>
+          </div>
+          <p class="log-desc" style="margin-bottom: 0;">
+            No changelog info available.
+          </p>
+        </article>
+
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="dmca.html">DMCA Policy</a>
+        <a href="https://github.com/eymenwsmc/playopspt.github.io" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p>Eagler Versions is an independent open-source mirror project. Not affiliated with Mojang AB or Microsoft.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

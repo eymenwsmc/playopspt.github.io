@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Privacy Policy · Eagler Versions</title>
+  <meta name="description" content="Privacy Policy for Eagler Versions. Details on cookie usage, Google AdSense, local IndexedDB storage, and data protection.">
+  <meta name="author" content="eymenwsmc">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://eymenwsmc.site/privacy.html" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1739607505559413" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --bg-dark: #0b0f17;
+      --bg-surface: #111722;
+      --bg-card: #161f2e;
+      --border-subtle: #243044;
+      --border-focus: #38bdf8;
+      --accent-color: #38bdf8;
+      --accent-btn: #0284c7;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 84px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 48px;
+    }
+
+    .brand {
+      text-decoration: none;
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 21px;
+    }
+    .brand span { color: var(--accent-color); }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .nav-links a:hover { color: var(--text-main); }
+
+    .doc-header {
+      margin-bottom: 40px;
+    }
+    .doc-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .doc-meta {
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+
+    .doc-body {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 36px;
+      margin-bottom: 56px;
+    }
+
+    h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-top: 32px;
+      margin-bottom: 12px;
+    }
+    h2:first-of-type { margin-top: 0; }
+
+    p {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+
+    ul {
+      color: var(--text-muted);
+      font-size: 15px;
+      padding-left: 24px;
+      margin-bottom: 20px;
+    }
+    li { margin-bottom: 8px; }
+
+    a {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+    a:hover { text-decoration: underline; }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg-surface);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 13px;
+      color: var(--accent-color);
+    }
+
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 40px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 12px;
+    }
+    .footer-links a { color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <header>
+      <nav class="navbar">
+        <a class="brand" href="index.html">EAGLER<span>VERSIONS</span></a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="getting-started.html">Getting Started</a></li>
+          <li><a href="servers.html">Servers</a></li>
+          <li><a href="changelog.html">Changelog</a></li>
+          <li><a href="downloads.html">Downloads</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="doc-header">
+        <span class="doc-tag">Legal & Compliance</span>
+        <h1>Privacy Policy</h1>
+        <p class="doc-meta">Last Updated: August 2026 · Effective Immediately</p>
+      </div>
+
+      <article class="doc-body">
+        <h2>1. Overview</h2>
+        <p>
+          This Privacy Policy explains how <strong>Eagler Versions</strong> (available at eymenwsmc.site and playopspt.github.io) handles data when you visit our website, play browser builds, or download offline client files. We prioritize user privacy and operate with minimal data collection principles.
+        </p>
+
+        <h2>2. Information We Do Not Collect</h2>
+        <p>
+          We do not require account registration, email addresses, passwords, or payment information. All web-based gameplay happens locally inside your browser runtime.
+        </p>
+
+        <h2>3. Local Browser Storage (IndexedDB & LocalStorage)</h2>
+        <p>
+          When you create singleplayer worlds, adjust graphic settings, or upload custom player skins, this data is saved directly to your computer using your browser's <code>IndexedDB</code> database and <code>localStorage</code>.
+        </p>
+        <ul>
+          <li>This data never leaves your device and is not uploaded to our servers.</li>
+          <li>Clearing your browser cache or site data will erase these locally saved singleplayer worlds unless you export them using the in-game backup button (.epk format).</li>
+        </ul>
+
+        <h2>4. Third-Party Advertising & Cookies (Google AdSense)</h2>
+        <p>
+          We use third-party advertising companies, including <strong>Google AdSense</strong>, to serve advertisements when you visit our website. These companies may use cookies, web beacons, and similar tracking technologies to serve ads based on your prior visits to this website or other sites on the Internet.
+        </p>
+        <ul>
+          <li><strong>Google's DART Cookie:</strong> Google's use of advertising cookies enables it and its partners to serve ads based on your visits to our site and other websites across the web.</li>
+          <li><strong>Opt-Out:</strong> You may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a> or through the <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">AboutAds.info</a> opt-out portal.</li>
+        </ul>
+
+        <h2>5. Web Server Log Files</h2>
+        <p>
+          Like most web hosting providers (such as GitHub Pages or Cloudflare), standard log files may record technical information such as your IP address, browser type, referring/exit pages, operating system, and date/time stamps. This information is used strictly for technical performance monitoring, DDOS prevention, and security analytics.
+        </p>
+
+        <h2>6. Third-Party Links & WebSocket Servers</h2>
+        <p>
+          Our site includes links to third-party services such as Discord, GitHub, and community multiplayer WebSocket servers (<code>wss://</code>). We do not control and are not responsible for the privacy practices of external websites or game server operators.
+        </p>
+
+        <h2>7. Children's Privacy (COPPA Compliance)</h2>
+        <p>
+          We do not knowingly collect any personal identifiable information from children under the age of 13. If you believe that your child has provided personal information on our website, please contact us immediately so we can remove it.
+        </p>
+
+        <h2>8. Updates to This Policy</h2>
+        <p>
+          We may update this Privacy Policy from time to time to reflect technological or legal updates. Any modifications will be posted directly on this page with an updated timestamp.
+        </p>
+      </article>
+    </main>
+
+    <footer>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="dmca.html">DMCA Policy</a>
+        <a href="https://github.com/eymenwsmc/playopspt.github.io" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p>Eagler Versions is an independent open-source mirror project. Not affiliated with Mojang AB or Microsoft.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Multiplayer & WebSocket Server Guide · Eaglercraft</title>
+  <meta name="description" content="Learn how to join multiplayer Eaglercraft servers using WebSocket proxies (wss://), discover active community servers, and setup EaglerXServer.">
+  <meta name="keywords" content="eaglercraft servers, eaglercraft multiplayer, eaglercraft wss, eaglerxserver, lax1dude eaglerxserver, tuffnet, tuff.ws, eaglercraft server list">
+  <meta name="author" content="eymenwsmc">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://eymenwsmc.site/servers.html" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1739607505559413" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --bg-dark: #0b0f17;
+      --bg-surface: #111722;
+      --bg-card: #161f2e;
+      --bg-card-hover: #1c283c;
+      --border-subtle: #243044;
+      --border-focus: #38bdf8;
+      --accent-color: #38bdf8;
+      --accent-btn: #0284c7;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 84px;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 48px;
+    }
+
+    .brand {
+      text-decoration: none;
+      color: var(--text-main);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      font-size: 21px;
+    }
+    .brand span { color: var(--accent-color); }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .nav-links a:hover { color: var(--text-main); }
+    .nav-links a.active { color: var(--accent-color); }
+
+    .hero-servers {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .server-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+    }
+    .hero-servers p {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .server-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+
+    .server-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .server-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .server-type {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--accent-color);
+      margin-bottom: 12px;
+    }
+    .server-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .server-address-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text-main);
+      word-break: break-all;
+    }
+
+    .info-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      margin-bottom: 56px;
+    }
+
+    h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 14px;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+
+    ul {
+      color: var(--text-muted);
+      font-size: 15px;
+      padding-left: 24px;
+      margin-bottom: 16px;
+    }
+    li { margin-bottom: 8px; }
+
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg-surface);
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 13px;
+      color: var(--accent-color);
+    }
+
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 40px 0;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 12px;
+    }
+    .footer-links a { color: var(--text-muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--text-main); }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <header>
+      <nav class="navbar">
+        <a class="brand" href="index.html">EAGLER<span>VERSIONS</span></a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="getting-started.html">Getting Started</a></li>
+          <li><a href="servers.html" class="active">Servers</a></li>
+          <li><a href="changelog.html">Changelog</a></li>
+          <li><a href="downloads.html">Downloads</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="hero-servers">
+        <span class="server-tag">Network & Multiplayer</span>
+        <h1>Multiplayer & WebSocket Servers</h1>
+        <p>Because web browsers cannot open raw TCP sockets, Eaglercraft connects to Minecraft servers through secure WebSocket (wss://) proxies.</p>
+      </div>
+
+      <section class="server-cards-grid">
+        <div class="server-card">
+          <div>
+            <h3 class="server-name">TuffNET</h3>
+            <div class="server-type">Anarchy OB · Skyblock · Plots · Vanilla 1.12 · RPG</div>
+            <p class="server-desc">Multi-gamemode network featuring Anarchy OB, Skyblock, Plots, Vanilla 1.12, and RPG modes...</p>
+          </div>
+          <div class="server-address-box">
+            <code>wss://tuff.ws</code>
+          </div>
+        </div>
+      </section>
+
+      <article class="info-section">
+        <h2>How to Join a Multiplayer Server</h2>
+        <ol style="color: var(--text-muted); font-size: 15px; padding-left: 24px; margin-bottom: 24px;">
+          <li>Launch any Eaglercraft build from our <a href="index.html">Catalog</a>.</li>
+          <li>Click <strong>Multiplayer</strong> from the game's title screen.</li>
+          <li>Click <strong>Add Server</strong>.</li>
+          <li>Enter any server name and paste the WebSocket URI into the server address field (e.g. <code>wss://tuff.ws</code>).</li>
+          <li>Click <strong>Done</strong>, select the server, and click <strong>Join Server</strong>!</li>
+        </ol>
+
+        <h2>How Does Eaglercraft Networking Work?</h2>
+        <p>
+          Standard Minecraft Java servers communicate using raw TCP packets. Because web browser security sandboxes block direct TCP sockets, browser clients connect via protocol translation layers like <a href="https://github.com/lax1dude/eaglerxserver" target="_blank" rel="noopener"><strong>EaglercraftXServer</strong></a> (a.k.a. <strong>EaglerXServer</strong>) created by lax1dude.
+        </p>
+
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; margin: 20px 0 10px; color: var(--text-main);">What is EaglercraftXServer?</h3>
+        <p>
+          EaglercraftXServer is an industrial-grade server plugin that changes how frames (and a few packets) are encoded in the Minecraft protocol to make it compatible with web browsers and extend client capabilities. It does not tamper with server authentication settings or modify inbound connection authentication states.
+        </p>
+
+        <ul>
+          <li><strong>Universal Single-JAR Deployment:</strong> Installs directly on <strong>Spigot</strong>, <strong>BungeeCord</strong>, or <strong>Velocity</strong> from a single unified JAR file (requires Java 17+).</li>
+          <li><strong>Cross-Platform Server API:</strong> Provides native APIs for custom player skin relays, integrated voice chat channels, cookie authentication, and a backend RPC protocol to access Bungee/Velocity APIs from backend Spigot servers.</li>
+          <li><strong>Packet Translator Ecosystem:</strong> Supports extensions such as <code>EaglerXRewind</code> (translating packets for 1.5.2 clients like ViaVersion), <code>EaglerMOTD</code>, <code>EaglerWeb</code>, and <code>EaglerXSupervisor</code> for multi-proxy synchronization.</li>
+          <li><strong>SSL / TLS (wss://) Security:</strong> Servers must use <code>wss://</code> (WebSocket Secure) when accessed from HTTPS web portals to meet browser mixed-content security requirements.</li>
+        </ul>
+      </article>
+    </main>
+
+    <footer>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="dmca.html">DMCA Policy</a>
+        <a href="https://github.com/eymenwsmc/playopspt.github.io" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p>Eagler Versions is an independent open-source mirror project. Not affiliated with Mojang AB or Microsoft.</p>
+    </footer>
+
+  </div>
+
+</body>
+</html>
