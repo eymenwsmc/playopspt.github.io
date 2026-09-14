@@ -4,1083 +4,808 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Eaglercraft 1.20.6/1.14.4/1.7.10</title>
-  <meta name="description" content="Play Eaglercraft 1.20.6 (pre-release), 1.14.4 (u1), 1.7.10 (u1), 1.4.7 (u0), Beta, and Alpha directly in your browser. No Java installation or downloads required.">
-  <meta name="keywords" content="eaglercraft, eaglercraft 1.20.6, eaglercraft 1.14, eaglercraft 1.7.10, eaglercraft unblocked, browser minecraft, eaglercraft chromebook, play eaglercraft online">
-  <meta name="author" content="eymenwsmc">
+  <title>Eagler Versions · Web Launcher</title>
+  <meta name="description" content="Play Eaglercraft 26.2, 1.20.6, 1.14.4, 1.7.10, and classic versions directly in your browser. Active community servers included.">
+  <meta name="keywords" content="eaglercraft, eagler versions, eaglercraft 26.2, eaglercraft 1.20.6, eaglercraft 1.14, browser minecraft, eaglercraft smp, eaglercraft servers">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://eymenwsmc.site/" />
 
-  <!-- Google Fonts: Outfit, Plus Jakarta Sans, JetBrains Mono -->
+  <!-- Google Fonts: Plus Jakarta Sans, JetBrains Mono, Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1739607505559413" crossorigin="anonymous"></script>
 
-  <style>
-    :root {
-      --bg-dark: #0b0f17;
-      --bg-surface: #111722;
-      --bg-card: #161f2e;
-      --bg-card-hover: #1c283c;
-      --border-subtle: #243044;
-      --border-focus: #38bdf8;
-      --accent-color: #38bdf8;
-      --accent-hover: #7dd3fc;
-      --accent-btn: #0284c7;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
-      --radius-sm: 4px;
-      --radius-md: 8px;
-      --radius-lg: 12px;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-      min-height: 100vh;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    .container {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* --- Navigation --- */
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 84px;
-    }
-
-    .brand {
-      text-decoration: none;
-      color: var(--text-main);
-      font-family: 'Outfit', sans-serif;
-      font-weight: 800;
-      font-size: 21px;
-      letter-spacing: -0.02em;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .brand span {
-      color: var(--accent-color);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-      transition: color 0.15s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--text-main);
-    }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .nav-btn-discord {
-      background: #5865f2;
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 13px;
-      font-weight: 700;
-      padding: 8px 16px;
-      border-radius: var(--radius-sm);
-      transition: opacity 0.15s ease;
-    }
-
-    .nav-btn-discord:hover {
-      opacity: 0.9;
-    }
-
-    .btn-github-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border-subtle);
-      background: var(--bg-surface);
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      transition: all 0.15s ease;
-    }
-
-    .btn-github-icon:hover {
-      border-color: var(--border-focus);
-      color: var(--text-main);
-    }
-
-    .btn-github-icon svg {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
-    }
-
-    /* --- Hero Section --- */
-    .hero {
-      padding: 56px 0 44px;
-      text-align: center;
-    }
-
-    .status-badge {
-      display: inline-block;
-      padding: 6px 14px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--border-subtle);
-      background: var(--bg-surface);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--accent-color);
-      margin-bottom: 24px;
-      letter-spacing: 0.02em;
-    }
-
-    h1 {
-      font-family: 'Outfit', sans-serif;
-      font-size: clamp(2.7rem, 6vw, 4.4rem);
-      font-weight: 800;
-      line-height: 1.06;
-      letter-spacing: -0.03em;
-      color: var(--text-main);
-      max-width: 820px;
-      margin: 0 auto 18px;
-    }
-
-    h1 span {
-      color: var(--accent-color);
-    }
-
-    .hero-subtitle {
-      font-size: 18px;
-      color: var(--text-muted);
-      max-width: 620px;
-      margin: 0 auto 36px;
-      line-height: 1.6;
-    }
-
-    /* --- Fast Launcher Bar --- */
-    .launcher-box {
-      max-width: 540px;
-      margin: 0 auto 56px;
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 24px;
-      text-align: left;
-    }
-
-    .launcher-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    .launcher-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--accent-color);
-      font-weight: 700;
-    }
-
-    .launcher-hint {
-      font-size: 12px;
-      color: var(--text-dim);
-    }
-
-    .select-wrap {
-      position: relative;
-      margin-bottom: 14px;
-    }
-
-    .version-select {
-      width: 100%;
-      appearance: none;
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-sm);
-      color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      font-size: 15px;
-      font-weight: 600;
-      padding: 14px 44px 14px 16px;
-      cursor: pointer;
-      transition: border-color 0.15s ease;
-    }
-
-    .version-select:hover, .version-select:focus {
-      border-color: var(--border-focus);
-      outline: none;
-    }
-
-    .select-arrow {
-      position: absolute;
-      right: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none;
-      width: 16px;
-      height: 16px;
-      fill: var(--accent-color);
-    }
-
-    .version-select option {
-      background: var(--bg-surface);
-      color: var(--text-main);
-    }
-
-    .launcher-controls {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .btn-launch {
-      background: var(--accent-btn);
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 15px;
-      padding: 14px 20px;
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: background 0.15s ease;
-    }
-
-    .btn-launch:hover {
-      background: var(--accent-color);
-      color: #0b0f17;
-    }
-
-    .btn-offline {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-main);
-      font-weight: 600;
-      font-size: 15px;
-      padding: 14px 20px;
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: all 0.15s ease;
-    }
-
-    .btn-offline:hover {
-      border-color: var(--border-focus);
-      color: var(--accent-color);
-    }
-
-    /* --- Highlights Strip --- */
-    .highlights-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
-      margin-bottom: 72px;
-    }
-
-    .highlight-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 20px;
-      text-align: left;
-    }
-
-    .highlight-label {
-      font-family: 'Outfit', sans-serif;
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 4px;
-    }
-
-    .highlight-text {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    /* --- Version Catalog Section --- */
-    .catalog-section {
-      margin-bottom: 72px;
-    }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-bottom: 28px;
-    }
-
-    .section-title {
-      font-family: 'Outfit', sans-serif;
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    .section-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-top: 4px;
-    }
-
-    /* Filter Controls & Search */
-    .catalog-toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 24px;
-    }
-
-    .filter-tabs {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-muted);
-      padding: 8px 14px;
-      font-size: 13px;
-      font-weight: 600;
-      border-radius: var(--radius-sm);
-      cursor: pointer;
-      transition: all 0.15s ease;
-      font-family: inherit;
-    }
-
-    .filter-btn:hover {
-      color: var(--text-main);
-      border-color: var(--border-focus);
-    }
-
-    .filter-btn.active {
-      background: var(--accent-btn);
-      border-color: var(--accent-btn);
-      color: #ffffff;
-    }
-
-    .search-input {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-main);
-      padding: 8px 14px;
-      font-size: 13px;
-      border-radius: var(--radius-sm);
-      width: 260px;
-      font-family: inherit;
-      outline: none;
-      transition: border-color 0.15s ease;
-    }
-
-    .search-input:focus {
-      border-color: var(--border-focus);
-    }
-
-    .search-input::placeholder {
-      color: var(--text-dim);
-    }
-
-    /* Cards Grid */
-    .catalog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 20px;
-    }
-
-    .version-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: border-color 0.15s ease, background 0.15s ease;
-    }
-
-    .version-card:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--border-focus);
-    }
-
-    .card-top {
-      margin-bottom: 20px;
-    }
-
-    .card-badges {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-
-    .card-tag {
-      display: inline-block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: var(--radius-sm);
-      letter-spacing: 0.04em;
-    }
-
-    .tag-prerelease {
-      background: rgba(244, 63, 94, 0.15);
-      color: #fb7185;
-      border: 1px solid rgba(244, 63, 94, 0.35);
-      text-transform: lowercase;
-    }
-
-    .tag-update {
-      background: rgba(56, 189, 248, 0.15);
-      color: #38bdf8;
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      text-transform: lowercase;
-    }
-
-    .tag-base {
-      background: rgba(148, 163, 184, 0.12);
-      color: #94a3b8;
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      text-transform: lowercase;
-    }
-
-    .tag-wasm {
-      background: rgba(16, 185, 129, 0.15);
-      color: #34d399;
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      text-transform: uppercase;
-    }
-
-    .tag-js {
-      background: rgba(234, 179, 8, 0.15);
-      color: #facc15;
-      border: 1px solid rgba(234, 179, 8, 0.35);
-      text-transform: uppercase;
-    }
-
-    .card-name {
-      font-family: 'Outfit', sans-serif;
-      font-size: 21px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .card-desc {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.55;
-    }
-
-    .card-actions {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .btn-card-play {
-      flex: 1;
-      text-align: center;
-      background: var(--accent-btn);
-      color: #ffffff;
-      padding: 10px 14px;
-      font-size: 13px;
-      font-weight: 700;
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      transition: background 0.15s ease;
-    }
-
-    .btn-card-play:hover {
-      background: var(--accent-color);
-      color: #0b0f17;
-    }
-
-    .btn-card-offline {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-muted);
-      padding: 10px 14px;
-      font-size: 13px;
-      font-weight: 600;
-      border-radius: var(--radius-sm);
-      text-decoration: none;
-      transition: all 0.15s ease;
-    }
-
-    .btn-card-offline:hover {
-      color: var(--text-main);
-      border-color: var(--border-focus);
-    }
-
-    /* --- How It Works Section --- */
-    .guide-section {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 40px;
-      margin-bottom: 72px;
-    }
-
-    .guide-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 28px;
-      margin-top: 28px;
-    }
-
-    .guide-item h4 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 8px;
-    }
-
-    .guide-item p {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* --- FAQ & Notes --- */
-    .faq-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-bottom: 72px;
-    }
-
-    .faq-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 28px;
-    }
-
-    .faq-box h3 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: var(--text-main);
-    }
-
-    .faq-box p, .faq-box ul {
-      font-size: 14px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    .faq-box ul {
-      padding-left: 20px;
-      margin-top: 10px;
-    }
-
-    .faq-box li {
-      margin-bottom: 6px;
-    }
-
-    .faq-box a {
-      color: var(--accent-color);
-      text-decoration: none;
-    }
-
-    .faq-box a:hover {
-      text-decoration: underline;
-    }
-
-    /* --- Footer --- */
-    footer {
-      border-top: 1px solid var(--border-subtle);
-      padding: 40px 0;
-      text-align: center;
-      font-size: 13px;
-      color: var(--text-dim);
-    }
-
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 14px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 13px;
-    }
-
-    .footer-links a:hover {
-      color: var(--accent-color);
-    }
-
-    footer p {
-      margin-bottom: 6px;
-    }
-
-    .footer-credit {
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
-    /* Mobile adjustments */
-    @media (max-width: 768px) {
-      .navbar {
-        height: auto;
-        padding: 20px 0;
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      .nav-links {
-        gap: 16px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .hero {
-        padding: 36px 0 28px;
-      }
-
-      .launcher-controls {
-        grid-template-columns: 1fr;
-      }
-
-      .catalog-toolbar {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .search-input {
-        width: 100%;
-      }
-
-      .faq-section {
-        grid-template-columns: 1fr;
-      }
-
-      .guide-section {
-        padding: 24px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="launcher-theme.css">
 </head>
 
 <body>
 
-  <div class="container">
+  <div class="launcher-frame">
 
-    <!-- Top Navigation -->
-    <header>
-      <nav class="navbar" aria-label="Main navigation">
-        <a class="brand" href="index.html" aria-label="Eagler Versions">
-          EAGLER<span>VERSIONS</span>
+    <!-- Top Bar with Clean Brand -->
+    <header class="launcher-titlebar">
+      <a href="index.html" class="brand">
+        EAGLER<span>VERSIONS</span>
+      </a>
+
+      <div class="header-quick-links">
+        <a href="https://discord.gg/wsAYH987U" target="_blank" rel="noopener noreferrer" class="btn-discord">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>
+          <span>Discord Community</span>
         </a>
-
-        <ul class="nav-links">
-          <li><a href="#catalog">Catalog</a></li>
-          <li><a href="getting-started.html">Getting Started</a></li>
-          <li><a href="servers.html">Servers</a></li>
-          <li><a href="changelog.html">Changelog</a></li>
-          <li><a href="downloads.html">Downloads</a></li>
-        </ul>
-
-        <div class="nav-actions">
-          <a href="https://discord.gg/2TGCmPqBRx" target="_blank" rel="noopener noreferrer" class="nav-btn-discord">
-            Join Discord
-          </a>
-          <a href="https://github.com/orgs/Eagler-Versions/repositories" target="_blank" rel="noopener noreferrer" class="btn-github-icon" title="GitHub Repositories" aria-label="GitHub">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-            </svg>
-          </a>
-        </div>
-      </nav>
+        <a href="https://github.com/eymenwsmc/playopspt.github.io" target="_blank" rel="noopener noreferrer" class="btn-header-ghost">
+          GitHub
+        </a>
+      </div>
     </header>
 
-    <main>
-      <!-- Hero Section -->
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="status-badge">
-          Builds updated for browser play · 1.20.6 & 1.14.4 WASM
-        </div>
+    <!-- Launcher Navigation Tabs -->
+    <nav class="launcher-nav" aria-label="Launcher navigation">
+      <button class="nav-tab-btn active" data-tab="play" onclick="switchTab('play')">
+        PLAY
+      </button>
+      <button class="nav-tab-btn" data-tab="servers" onclick="switchTab('servers')">
+        COMMUNITY SERVERS
+      </button>
+      <button class="nav-tab-btn" data-tab="installations" onclick="switchTab('installations')">
+        INSTALLATIONS
+      </button>
+      <a href="changelog.html" class="nav-tab-btn">
+        PATCH NOTES
+      </a>
+      <a href="getting-started.html" class="nav-tab-btn">
+        GUIDE
+      </a>
+    </nav>
 
-        <h1 id="hero-title">Play Minecraft in your <span>web browser</span></h1>
+    <!-- ======================================================== -->
+    <!-- TAB 1: PLAY -->
+    <!-- ======================================================== -->
+    <main id="pane-play" class="tab-pane active">
 
-        <p class="hero-subtitle">
-          My (eymenwsmc's) minecraft ports, just select the version you'd like to play below.
-        </p>
-
-        <!-- Launcher Dropdown Card -->
-        <div class="launcher-box">
-          <div class="launcher-header">
-            <span class="launcher-title">Quick Launch Build</span>
-            <span class="launcher-hint">7 builds available</span>
-          </div>
-          
-          <div class="select-wrap">
-            <select id="version-select" class="version-select" onchange="updateVersionAction(this)">
-              <option value="./262/index.html?v=de3c2ebdbdc055ef" selected>Eaglercraft 26.2 (0.5-dev) · WASM</option>
-              <option value="./120/index.html?v=20260824-5430efd6" selected>Eaglercraft 1.20.6 (beta) · WASM</option>
-              <option value="./114/index.html">Eaglercraft 1.14.4 (u1) · WASM</option>
-              <option value="r1710/">Eaglercraft 1.7.10 (u1) · WASM</option>
-              <option value="r147/">Eaglercraft 1.4.7 (u0) · WASM</option>
-              <option value="beta6/">Eaglercraft Beta 1.6.4 (u0) · JS</option>
-              <option value="beta/">Eaglercraft Beta 1.5_01 (u0) · JS</option>
-              <option value="alpha/">Eaglercraft Alpha 1.0.6_03 (u0) · JS</option>
-            </select>
-            <svg class="select-arrow" viewBox="0 0 24 24">
-              <path d="M7 10l5 5 5-5z"/>
-            </svg>
-          </div>
-
-          <div class="launcher-controls">
-            <a id="version-action" class="btn-launch" href="./120/index.html?v=20260824-5430efd6">
-              Launch Game
-            </a>
-            <a class="btn-offline" href="downloads.html">
-              Offline Downloads
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <!-- Highlights Strip -->
-      <section class="highlights-grid" aria-label="Feature Highlights">
-        <div class="highlight-card">
-          <div class="highlight-label">100% Client-Side</div>
-          <div class="highlight-text">Compiles original Java code to WebAssembly and JavaScript, running directly inside browser memory.</div>
-        </div>
-        <div class="highlight-card">
-          <div class="highlight-label">IndexedDB Storage</div>
-          <div class="highlight-text">Singleplayer worlds, custom skins, and settings stay saved locally in your browser.</div>
-        </div>
-        <div class="highlight-card">
-          <div class="highlight-label">WebSocket Servers</div>
-          <div class="highlight-text">Connect to multiplayer Eaglercraft servers with standard websocket proxy protocols.</div>
-        </div>
-        <div class="highlight-card">
-          <div class="highlight-label">Chromebook Ready</div>
-          <div class="highlight-text">Optimized for low-spec laptops, macOS, Linux, and school Chromebooks without lag.</div>
-        </div>
-      </section>
-
-      <!-- Catalog Section with Filter & Search -->
-      <section id="catalog" class="catalog-section" aria-labelledby="catalog-title">
-        <div class="section-head">
-          <div>
-            <h2 id="catalog-title" class="section-title">Version Catalog</h2>
-            <p class="section-desc">Launch any build instantly or grab standalone HTML files for offline play.</p>
-          </div>
-        </div>
-
-        <!-- Filter Tabs & Live Search -->
-        <div class="catalog-toolbar">
-          <div class="filter-tabs">
-            <button class="filter-btn active" onclick="filterCategory('all', this)">All Builds (7)</button>
-            <button class="filter-btn" onclick="filterCategory('modern', this)">Modern (1.20 & 1.14)</button>
-            <button class="filter-btn" onclick="filterCategory('legacy', this)">Classic & PvP (1.7 & 1.4)</button>
-            <button class="filter-btn" onclick="filterCategory('retro', this)">Beta & Alpha</button>
-          </div>
-
-          <input type="text" id="catalog-search" class="search-input" placeholder="Search versions (e.g. 1.7, wasm, js, u1)..." oninput="searchVersions(this.value)">
-        </div>
-
-        <div class="catalog-grid" id="versions-container">
-
-          <!-- 26.2 Card (dev + WASM) -->
-          <article class="version-card" data-category="modern" data-keywords="1.20 1.20.6 wasm beta latest modern">
-            <div class="card-top">
-              <div class="card-badges">
-                <span class="card-tag tag-prerelease">dev</span>
-                <span class="card-tag tag-wasm">WASM</span>
-              </div>
-              <h3 class="card-name">Eaglercraft 26.2</h3>
-              <p class="card-desc">Latest version of minecraft working on a browser runtime. Made by o_xer</p>
-            </div>
-            <div class="card-actions">
-              <a href="./262/index.html?v=de3c2ebdbdc055ef" class="btn-card-play">Play Now</a>
-              <a href="https://www.mediafire.com/file/a00orkr4rfe92yj/eaglercraft-26.2-0.5.html/file" class="btn-card-offline">Offline .html</a>
-            </div>
-          </article>
-
-          <!-- 1.20.6 Card (pre-release + WASM) -->
-          <article class="version-card" data-category="modern" data-keywords="1.20 1.20.6 wasm beta latest modern">
-            <div class="card-top">
-              <div class="card-badges">
-                <span class="card-tag tag-prerelease">beta</span>
-                <span class="card-tag tag-wasm">WASM</span>
-              </div>
-              <h3 class="card-name">Eaglercraft 1.20.6</h3>
-              <p class="card-desc">Modern engine features compiled via WebAssembly runtime. Includes eagler features, optimizations, and many more.</p>
-            </div>
-            <div class="card-actions">
-              <a href="./120/index.html?v=20260824-5430efd6" class="btn-card-play">Play Now</a>
-              <a href="downloads.html" class="btn-card-offline">Offline .html</a>
-            </div>
-          </article>
-
-          <!-- 1.14.4 Card (u1 + WASM) -->
-          <article class="version-card" data-category="modern" data-keywords="1.14 1.14.4 u1 wasm village pillage modern">
-            <div class="card-top">
-              <div class="card-badges">
-                <span class="card-tag tag-update">u1</span>
-                <span class="card-tag tag-wasm">WASM</span>
-              </div>
-              <h3 class="card-name">Eaglercraft 1.14.4</h3>
-              <p class="card-desc">Village & Pillage update! 1.14 compiled to WebAssembly. Smooth performance on low-spec hardware and Chromebooks.</p>
-            </div>
-            <div class="card-actions">
-              <a href="./114/index.html" class="btn-card-play">Play Now</a>
-              <a href="downloads.html" class="btn-card-offline">Offline .html</a>
-            </div>
-          </article>
-
-          <!-- 1.7.10 Card (u1 + WASM) -->
-          <article class="version-card" data-category="legacy" data-keywords="1.7 1.7.10 u1 wasm pvp optifine legacy first port staple">
-            <div class="card-top">
-              <div class="card-badges">
-                <span class="card-tag tag-update">u1</span>
-                <span class="card-tag tag-wasm">WASM</span>
-              </div>
-              <h3 class="card-name">Eaglercraft 1.7.10</h3>
-              <p class="card-desc">The staple version for classic multiplayer PvP. Includes eagler features. (The first release version that I ported)</p>
-            </div>
-            <div class="card-actions">
-              <a href="r1710/" class="btn-card-play">Play Now</a>
-              <a href="downloads.html" class="btn-card-offline">Offline .html</a>
-            </div>
-          </article>
-
-          <!-- 1.4.7 Card (u0 + WASM) -->
-          <article class="version-card" data-category="legacy" data-keywords="1.4 1.4.7 u0 wasm optifine hd d5 redstone nostalgia legacy">
-            <div class="card-top">
-              <div class="card-badges">
-                <span class="card-tag tag-base">u0</span>
-                <span class="card-tag tag-wasm">WASM</span>
-              </div>
-              <h3 class="card-name">Eaglercraft 1.4.7</h3>
-              <p class="card-desc">Includes OptiFine HD D5 with classic redstone mechanics, anvil repair, and original texture packs.</p>
-            </div>
-            <div class="card-actions">
-              <a href="r147/" class="btn-card-play">Play Now</a>
-              <a href="downloads.html" class="btn-card-offline">Offline .html</a>
-            </div>
-          </article>
-
-          <!-- Beta 1.6.4 Card (u0 + JS) -->
-          <article class="version-card" data-category="retro" data-keywords="beta 1.6 1.6.4 u0 js maps trapdoors retro 2011">
-            <div class="card-top">
-              <div class="card-badges">
-                <span class="card-tag tag-base">u0</span>
-                <span class="card-tag tag-js">JS</span>
-              </div>
-              <h3 class="card-name">Beta 1.6.4</h3>
-              <p class="card-desc">Classic Beta gameplay with maps, trapdoors, and early terrain generator algorithms.</p>
-            </div>
-            <div class="card-actions">
-              <a href="beta6/" class="btn-card-play">Play Now</a>
-              <a href="downloads.html" class="btn-card-offline">Offline .html</a>
-            </div>
-          </article>
-
-          <!-- Beta 1.5_01 Card (u0 + JS) -->
-          <article class="version-card" data-category="retro" data-keywords="beta 1.5 1.5_01 u0 js weather rails retro 2011">
-            <div class="card-top">
-              <div class="card-badges">
-                <span class="card-tag tag-base">u0</span>
-                <span class="card-tag tag-js">JS</span>
-              </div>
-              <h3 class="card-name">Beta 1.5_01</h3>
-              <p class="card-desc">Features weather systems, powered rails, and classic health restoration through food items.</p>
-            </div>
-            <div class="card-actions">
-              <a href="beta/" class="btn-card-play">Play Now</a>
-              <a href="downloads.html" class="btn-card-offline">Offline .html</a>
-            </div>
-          </article>
-
-          <!-- Alpha 1.0.6_03 Card (u0 + JS) -->
-          <article class="version-card" data-category="retro" data-keywords="alpha 1.0 1.0.6 1.0.6_03 u0 js secret saturday 2010 retro">
-            <div class="card-top">
-              <div class="card-badges">
-                <span class="card-tag tag-base">u0</span>
-                <span class="card-tag tag-js">JS</span>
-              </div>
-              <h3 class="card-name">Alpha 1.0.6_03</h3>
-              <p class="card-desc">Original 2010 Secret Saturday build. Bright neon grass, simple inventory, and raw voxel terrain generation.</p>
-            </div>
-            <div class="card-actions">
-              <a href="alpha/" class="btn-card-play">Play Now</a>
-              <a href="downloads.html" class="btn-card-offline">Offline .html</a>
-            </div>
-          </article>
-
-        </div>
-      </section>
-
-      <!-- Practical Guide Section -->
-      <section id="guide" class="guide-section" aria-labelledby="guide-title">
-        <h2 id="guide-title" class="section-title">How Eaglercraft Works</h2>
-        <p class="section-desc">Key details for saving worlds, joining servers, and optimizing performance.</p>
-
-        <div class="guide-grid">
-          <div class="guide-item">
-            <h4>Singleplayer Worlds</h4>
-            <p>Your worlds are stored in IndexedDB. You can export world backup files (.epk) from the Singleplayer menu anytime to keep them safe or move them to another computer.</p>
-          </div>
-          <div class="guide-item">
-            <h4>Multiplayer Servers</h4>
-            <p>Multiplayer connects using WebSocket addresses (starting with <code>wss://</code>). Any server running <a href="https://github.com/lax1dude/eaglerxserver" target="_blank" rel="noopener">EaglercraftXServer</a> (on Spigot, BungeeCord, or Velocity) can be joined directly from the Multiplayer menu.</p>
-          </div>
-          <div class="guide-item">
-            <h4>Custom Skins</h4>
-            <p>You can upload custom player skins in the game options. Both classic 64x32 and modern 64x64 skin formats are supported.</p>
-          </div>
-          <div class="guide-item">
-            <h4>Performance Tips</h4>
-            <p>If you experience frame drops on older hardware or Chromebooks, set render distance to 4–6 chunks and turn off smooth lighting in Video Settings.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- FAQ & AdSense Section -->
-      <section id="faq" class="faq-section">
-        <div class="faq-box">
-          <h3>Frequently Asked Questions</h3>
-          <p><strong>Do I need a Minecraft account?</strong></p>
-          <p>No. You can pick a custom username and jump right into singleplayer or community servers.</p>
-          <br>
-          <p><strong>Will clearing my browser history delete my worlds?</strong></p>
-          <p>Yes. Browser data wipes include IndexedDB storage. Make regular world backups using the Export World button in the singleplayer screen.</p>
-        </div>
-
-        <div class="faq-box">
-          <h3>Privacy Policy & Advertising</h3>
-          <p>
-            This website uses cookies to provide functionality and serve relevant advertisements through third-party vendors including Google AdSense.
+      <section class="launcher-hero-card">
+        <div class="hero-banner-visual">
+          <h1 class="hero-headline">Play Minecraft in your <span>browser</span></h1>
+          <p class="hero-subhead">
+            Pick a version below, click PLAY, and jump right in. Singleplayer worlds save directly in your browser with no Java or desktop installation needed.
           </p>
-          <ul>
-            <li>Third-party vendors use cookies to serve ads based on prior website visits.</li>
-            <li>You can opt out of personalized ads by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer">Google Ads Settings</a>.</li>
-          </ul>
+
+          <div class="hero-launch-bar">
+            <div class="launch-select-col">
+              <label class="launch-label" for="launcher-version-select">Select Installation</label>
+              <select id="launcher-version-select" class="hero-select" onchange="syncLauncherVersion(this.value)">
+                <option value="./262/index.html?v=292fa5ab221d7e6c" selected>Eaglercraft 26.2 (0.6-dev) · WASM</option>
+                <option value="./120/index.html?v=20260824-5430efd6">Eaglercraft 1.20.6 (Beta) · WASM</option>
+                <option value="./114/index.html">Eaglercraft 1.14.4 (u1) · WASM</option>
+                <option value="r1710/">Eaglercraft 1.7.10 (u1) · WASM</option>
+                <option value="r147/">Eaglercraft 1.4.7 (u0) · WASM</option>
+                <option value="beta6/">Beta 1.6.4 (u0) · JS</option>
+                <option value="beta/">Beta 1.5_01 (u0) · JS</option>
+                <option value="alpha/">Alpha 1.0.6_03 (u0) · JS</option>
+              </select>
+            </div>
+
+            <a id="hero-play-button" href="./262/index.html?v=292fa5ab221d7e6c" class="btn-mojang-primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              PLAY
+            </a>
+
+            <button type="button" class="btn-mojang-secondary" onclick="switchTab('servers')">
+              Community SMPs
+            </button>
+          </div>
         </div>
       </section>
+
+      <!-- Honest practical tips -->
+      <section class="tips-strip">
+        <div class="tip-card">
+          <div class="tip-title">Your Worlds & Saves</div>
+          <p class="tip-desc">
+            Singleplayer saves persist directly in your browser. You can export <code>.epk</code> world backup files from the Singleplayer menu anytime so you never lose progress.
+          </p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-title">Multiplayer Relays</div>
+          <p class="tip-desc">
+            Web browsers connect using WebSockets (<code>wss://</code>). Check the Community Servers tab to copy server addresses and paste them into in-game Direct Connect.
+          </p>
+        </div>
+        <div class="tip-card">
+          <div class="tip-title">Performance Tips</div>
+          <p class="tip-desc">
+            Runs smoothly on Chromebooks, Mac, Linux, and Windows. If you experience FPS drops on low-spec laptops, set render distance to 4–6 chunks in Video Settings.
+          </p>
+        </div>
+      </section>
+
+      <!-- Available Installations preview -->
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title-mc">Available Installations</h2>
+          <p class="section-subtext">Instant browser play or offline downloads</p>
+        </div>
+        <button class="filter-pill" onclick="switchTab('installations')">View All (7) &rarr;</button>
+      </div>
+
+      <div class="versions-list-layout">
+        <!-- 26.2 -->
+        <article class="version-item-card">
+          <div class="version-meta-col">
+            <div class="version-header-line">
+              <h3 class="version-heading">Eaglercraft 26.2</h3>
+              <span class="tag-pill highlight">dev</span>
+              <span class="tag-pill">WASM</span>
+            </div>
+            <p class="version-desc-text">
+              Active test build ported by o_xer. Runs client-side via WebAssembly.
+            </p>
+          </div>
+          <div class="version-btns-group">
+            <a href="./262/index.html?v=292fa5ab221d7e6c" class="btn-version-play">Launch 26.2</a>
+            <a href="https://www.mediafire.com/file/a00orkr4rfe92yj/eaglercraft-26.2-0.5.html/file" target="_blank" rel="noopener noreferrer" class="btn-version-offline">Offline .html</a>
+          </div>
+        </article>
+
+        <!-- 1.20.6 -->
+        <article class="version-item-card">
+          <div class="version-meta-col">
+            <div class="version-header-line">
+              <h3 class="version-heading">Eaglercraft 1.20.6</h3>
+              <span class="tag-pill highlight">beta</span>
+              <span class="tag-pill">WASM</span>
+            </div>
+            <p class="version-desc-text">
+              Modern blocks, swimming physics, and WebAssembly compilation. Stable for survival and modern servers.
+            </p>
+          </div>
+          <div class="version-btns-group">
+            <a href="./120/index.html?v=20260824-5430efd6" class="btn-version-play">Launch 1.20.6</a>
+            <a href="downloads.html" class="btn-version-offline">Offline .html</a>
+          </div>
+        </article>
+
+        <!-- 1.7.10 -->
+        <article class="version-item-card">
+          <div class="version-meta-col">
+            <div class="version-header-line">
+              <h3 class="version-heading">Eaglercraft 1.7.10</h3>
+              <span class="tag-pill highlight">u1</span>
+              <span class="tag-pill">WASM</span>
+            </div>
+            <p class="version-desc-text">
+              Classic PvP mechanics, fast rod clicks, and community networks. First release version I ported.
+            </p>
+          </div>
+          <div class="version-btns-group">
+            <a href="r1710/" class="btn-version-play">Launch 1.7.10</a>
+            <a href="downloads.html" class="btn-version-offline">Offline .html</a>
+          </div>
+        </article>
+      </div>
+
     </main>
 
+    <!-- ======================================================== -->
+    <!-- TAB 2: COMMUNITY SERVERS & SMPS -->
+    <!-- ======================================================== -->
+    <section id="pane-servers" class="tab-pane">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title-mc">Community Servers & SMPs</h2>
+          <p class="section-subtext">Active indie SMPs, community survival, and player-run worlds. Click any address to copy it.</p>
+        </div>
+        <div class="server-online-badge">
+          <span>Community Relays Online</span>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="server-controls-bar">
+        <input 
+          type="text" 
+          id="server-search-box" 
+          class="server-search-input" 
+          placeholder="Search by server name, wss:// address, or gamemode (e.g. smp, vanilla, anarchy)..." 
+          oninput="handleServerSearch(this.value)"
+        >
+
+        <div class="gamemode-tags-scroller">
+          <button class="filter-pill active" onclick="filterServerCategory('all', this)">All (7)</button>
+          <button class="filter-pill" onclick="filterServerCategory('smp', this)">SMP & Survival</button>
+          <button class="filter-pill" onclick="filterServerCategory('economy', this)">Economy</button>
+          <button class="filter-pill" onclick="filterServerCategory('enchants', this)">Custom Enchants</button>
+          <button class="filter-pill" onclick="filterServerCategory('anarchy', this)">Anarchy</button>
+          <button class="filter-pill" onclick="filterServerCategory('lifesteal', this)">Lifesteal</button>
+        </div>
+      </div>
+
+      <!-- Server Cards List -->
+      <div class="server-list-grid" id="servers-container">
+
+        <!-- Server: FreshYogurt SMP (Top Server) -->
+        <article class="server-entry-card featured-server" data-server="" data-gamemodes="smp economy enchants" data-keywords="freshyogurt fresh yogurt smp economy custom terrain structures spawners enchants discord 26.2 fair_human random_yogurt">
+          <div class="server-main-info">
+            <div class="server-title-row">
+              <h3 class="server-card-name">FreshYogurt SMP</h3>
+              <span class="server-online-badge">
+                <span class="status-dot online"></span>
+                <span class="player-count-text">Community Active &middot; 35+ Members</span>
+              </span>
+            </div>
+            <p class="server-card-desc">
+              Custom survival economy server featuring custom terrain generation, unique structures, spawners, and custom enchantments. Official Discord community founded September 2026 (owner: <code>fair_human / random_yogurt</code>). Join our Discord to get the server address and play: <a href="https://discord.gg/wsAYH987U" target="_blank" rel="noopener noreferrer" class="server-inline-link">discord.gg/wsAYH987U</a>
+            </p>
+            <div class="server-badges-row">
+              <span class="tag-pill highlight">Top Server</span>
+              <span class="tag-pill highlight">26.2 Supported</span>
+              <span class="tag-pill">Survival Economy</span>
+              <span class="tag-pill">Custom Terrain</span>
+              <span class="tag-pill">Structures</span>
+              <span class="tag-pill">Spawners</span>
+              <span class="tag-pill">Custom Enchants</span>
+            </div>
+          </div>
+          <div class="server-action-col">
+            <a href="https://discord.gg/wsAYH987U" target="_blank" rel="noopener noreferrer" class="btn-discord-join">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>
+              <span>Join Discord</span>
+            </a>
+            <button class="copy-address-btn" onclick="copyAddress('https://discord.gg/wsAYH987U', this)">
+              <span class="copied-toast">Copied!</span>
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy Discord</span>
+            </button>
+            <a href="./262/index.html?v=292fa5ab221d7e6c" class="btn-connect-play">Launch 26.2</a>
+          </div>
+        </article>
+
+        <!-- Server: TuffNET (Directly Behind FreshYogurt) -->
+        <article class="server-entry-card" data-server="wss://tuff.ws" data-ping-host="tuff.ws" data-gamemodes="smp anarchy" data-keywords="tuffnet tuff.ws semi-anarchy smp oneblock 26.2 viaversion">
+          <div class="server-main-info">
+            <div class="server-title-row">
+              <h3 class="server-card-name">TuffNET SMP & Anarchy</h3>
+              <span class="server-online-badge">
+                <span class="status-dot pinging"></span>
+                <span class="player-count-text">Pinging live...</span>
+              </span>
+            </div>
+            <p class="server-card-desc">
+              Community server featuring semi-anarchy, survival SMP, and OneBlock. ViaVersion proxy enabled for modern 26.2 client compatibility.
+            </p>
+            <div class="server-badges-row">
+              <span class="tag-pill highlight">26.2 Supported</span>
+              <span class="tag-pill">SMP</span>
+              <span class="tag-pill">Semi-Anarchy</span>
+              <span class="tag-pill">OneBlock</span>
+            </div>
+          </div>
+          <div class="server-action-col">
+            <button class="copy-address-btn" onclick="copyAddress('wss://tuff.ws', this)">
+              <span class="copied-toast">Copied!</span>
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>wss://tuff.ws</span>
+            </button>
+            <a href="./262/index.html?v=292fa5ab221d7e6c" class="btn-connect-play">Launch 26.2</a>
+          </div>
+        </article>
+
+        <!-- Server: FKAS MC -->
+        <article class="server-entry-card" data-server="wss://fkas.online" data-ping-host="fkas.online" data-gamemodes="smp lifesteal" data-keywords="fkas fkas.online lifesteal smp oneblock 26.2 viaversion">
+          <div class="server-main-info">
+            <div class="server-title-row">
+              <h3 class="server-card-name">FKAS Community SMP</h3>
+              <span class="server-online-badge">
+                <span class="status-dot pinging"></span>
+                <span class="player-count-text">Pinging live...</span>
+              </span>
+            </div>
+            <p class="server-card-desc">
+              Small player-run server with custom Lifesteal hearts, OneBlock challenges, and casual survival worlds. ViaVersion proxy enabled.
+            </p>
+            <div class="server-badges-row">
+              <span class="tag-pill highlight">26.2 Supported</span>
+              <span class="tag-pill">Lifesteal</span>
+              <span class="tag-pill">SMP</span>
+              <span class="tag-pill">OneBlock</span>
+            </div>
+          </div>
+          <div class="server-action-col">
+            <button class="copy-address-btn" onclick="copyAddress('wss://fkas.online', this)">
+              <span class="copied-toast">Copied!</span>
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>wss://fkas.online</span>
+            </button>
+            <a href="./262/index.html?v=292fa5ab221d7e6c" class="btn-connect-play">Launch 26.2</a>
+          </div>
+        </article>
+
+        <!-- Server: ArchMC Network -->
+        <article class="server-entry-card" data-server="wss://arch.mc" data-ping-host="arch.mc" data-gamemodes="smp anarchy" data-keywords="archmc arch.mc bedwars skyblock duels smp 26.2">
+          <div class="server-main-info">
+            <div class="server-title-row">
+              <h3 class="server-card-name">ArchMC Network</h3>
+              <span class="server-online-badge">
+                <span class="status-dot pinging"></span>
+                <span class="player-count-text">Pinging live...</span>
+              </span>
+            </div>
+            <p class="server-card-desc">
+              Major community network featuring Skyblock, Bedwars, Duels, and SMP survival worlds. Full 26.2 client support.
+            </p>
+            <div class="server-badges-row">
+              <span class="tag-pill highlight">26.2 Supported</span>
+              <span class="tag-pill">Bedwars</span>
+              <span class="tag-pill">Skyblock</span>
+              <span class="tag-pill">SMP</span>
+            </div>
+          </div>
+          <div class="server-action-col">
+            <button class="copy-address-btn" onclick="copyAddress('wss://arch.mc', this)">
+              <span class="copied-toast">Copied!</span>
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>wss://arch.mc</span>
+            </button>
+            <a href="./262/index.html?v=292fa5ab221d7e6c" class="btn-connect-play">Launch 26.2</a>
+          </div>
+        </article>
+
+        <!-- Server: Zentic Network -->
+        <article class="server-entry-card" data-server="wss://zentic.cc" data-ping-host="zentic.cc" data-gamemodes="smp economy" data-keywords="zentic zentic.cc practice pvp kitpvp smp 26.2">
+          <div class="server-main-info">
+            <div class="server-title-row">
+              <h3 class="server-card-name">Zentic Network</h3>
+              <span class="server-online-badge">
+                <span class="status-dot pinging"></span>
+                <span class="player-count-text">Pinging live...</span>
+              </span>
+            </div>
+            <p class="server-card-desc">
+              Popular community network with Practice PvP, KitPvP, Survival SMP, and custom leaderboards.
+            </p>
+            <div class="server-badges-row">
+              <span class="tag-pill highlight">26.2 Supported</span>
+              <span class="tag-pill">PvP Practice</span>
+              <span class="tag-pill">KitPvP</span>
+              <span class="tag-pill">SMP</span>
+            </div>
+          </div>
+          <div class="server-action-col">
+            <button class="copy-address-btn" onclick="copyAddress('wss://zentic.cc', this)">
+              <span class="copied-toast">Copied!</span>
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>wss://zentic.cc</span>
+            </button>
+            <a href="./262/index.html?v=292fa5ab221d7e6c" class="btn-connect-play">Launch 26.2</a>
+          </div>
+        </article>
+
+        <!-- Server: Shadowflare SMP -->
+        <article class="server-entry-card" data-server="wss://shadowflare.pages.dev" data-gamemodes="smp anarchy" data-keywords="shadowflare shadowflare.pages.dev donutsmp grief legacy 26.2 viaversion">
+          <div class="server-main-info">
+            <div class="server-title-row">
+              <h3 class="server-card-name">Shadowflare SMP</h3>
+              <span class="server-online-badge">
+                <span class="status-dot online"></span>
+                <span class="player-count-text">Online via Relay</span>
+              </span>
+            </div>
+            <p class="server-card-desc">
+              DonutSMP-style community survival with legacy world generation, grief allowed, and free ranks. ViaVersion proxy enabled.
+            </p>
+            <div class="server-badges-row">
+              <span class="tag-pill highlight">26.2 Supported</span>
+              <span class="tag-pill">SMP</span>
+              <span class="tag-pill">Casual Anarchy</span>
+            </div>
+          </div>
+          <div class="server-action-col">
+            <button class="copy-address-btn" onclick="copyAddress('wss://shadowflare.pages.dev', this)">
+              <span class="copied-toast">Copied!</span>
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>wss://shadowflare.pages.dev</span>
+            </button>
+            <a href="./262/index.html?v=292fa5ab221d7e6c" class="btn-connect-play">Launch 26.2</a>
+          </div>
+        </article>
+
+        <!-- Server: Amethyst Survival -->
+        <article class="server-entry-card" data-server="wss://amethyst.craft.gg" data-gamemodes="smp enchants" data-keywords="amethyst amethyst.craft.gg custom smp items dungeons 26.2 viaversion">
+          <div class="server-main-info">
+            <div class="server-title-row">
+              <h3 class="server-card-name">Amethyst Survival</h3>
+              <span class="server-online-badge">
+                <span class="status-dot online"></span>
+                <span class="player-count-text">Online via Relay</span>
+              </span>
+            </div>
+            <p class="server-card-desc">
+              Indie survival server with custom mobs, dungeon loot, community bases, and modern ViaVersion protocol support.
+            </p>
+            <div class="server-badges-row">
+              <span class="tag-pill highlight">26.2 Supported</span>
+              <span class="tag-pill">Custom Items</span>
+              <span class="tag-pill">Dungeons</span>
+              <span class="tag-pill">SMP</span>
+            </div>
+          </div>
+          <div class="server-action-col">
+            <button class="copy-address-btn" onclick="copyAddress('wss://amethyst.craft.gg', this)">
+              <span class="copied-toast">Copied!</span>
+              <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>wss://amethyst.craft.gg</span>
+            </button>
+            <a href="./262/index.html?v=292fa5ab221d7e6c" class="btn-connect-play">Launch 26.2</a>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="server-guide-box">
+        <h3>How to join a community server</h3>
+        <p>Because web browsers cannot connect to raw TCP Minecraft sockets, Eaglercraft uses secure WebSockets (<code>wss://</code>).</p>
+        <ol>
+          <li>Click the copy button on any server above to copy its <code>wss://</code> address.</li>
+          <li>Launch your chosen version (e.g. 1.20.6, 1.14.4, or 1.7.10).</li>
+          <li>Go to <strong>Multiplayer</strong> &rarr; <strong>Direct Connect</strong> (or <strong>Add Server</strong>).</li>
+          <li>Paste the copied address and click <strong>Join Server</strong>!</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- TAB 3: INSTALLATIONS -->
+    <!-- ======================================================== -->
+    <section id="pane-installations" class="tab-pane">
+      <div class="section-header-row">
+        <div>
+          <h2 class="section-title-mc">Client Installations</h2>
+          <p class="section-subtext">Play directly in browser or save standalone HTML files for offline play</p>
+        </div>
+      </div>
+
+      <div class="versions-list-layout">
+        <!-- 26.2 -->
+        <article class="version-item-card">
+          <div class="version-meta-col">
+            <div class="version-header-line">
+              <h3 class="version-heading">Eaglercraft 26.2 (0.6-dev)</h3>
+              <span class="tag-pill highlight">dev</span>
+              <span class="tag-pill">WASM</span>
+            </div>
+            <p class="version-desc-text">
+              Active test build ported by o_xer. Runs client-side via WebAssembly.
+            </p>
+          </div>
+          <div class="version-btns-group">
+            <a href="./262/index.html?v=292fa5ab221d7e6c" class="btn-version-play">Play Now</a>
+            <a href="https://www.mediafire.com/file/a00orkr4rfe92yj/eaglercraft-26.2-0.5.html/file" target="_blank" rel="noopener noreferrer" class="btn-version-offline">Offline .html</a>
+          </div>
+        </article>
+
+        <!-- 1.20.6 -->
+        <article class="version-item-card">
+          <div class="version-meta-col">
+            <div class="version-header-line">
+              <h3 class="version-heading">Eaglercraft 1.20.6 (Beta)</h3>
+              <span class="tag-pill highlight">beta</span>
+              <span class="tag-pill">WASM</span>
+            </div>
+            <p class="version-desc-text">
+              Modern terrain, swimming physics, and WebAssembly compilation. Stable for everyday survival and modern servers.
+            </p>
+          </div>
+          <div class="version-btns-group">
+            <a href="./120/index.html?v=20260824-5430efd6" class="btn-version-play">Play Now</a>
+            <a href="downloads.html" class="btn-version-offline">Offline .html</a>
+          </div>
+        </article>
+
+        <!-- 1.14.4 -->
+        <article class="version-item-card">
+          <div class="version-meta-col">
+            <div class="version-header-line">
+              <h3 class="version-heading">Eaglercraft 1.14.4 (u1)</h3>
+              <span class="tag-pill highlight">u1</span>
+              <span class="tag-pill">WASM</span>
+            </div>
+            <p class="version-desc-text">
+              Village & Pillage update! Highly optimized WebAssembly build with great performance on low-end laptops and Chromebooks.
+            </p>
+          </div>
+          <div class="version-btns-group">
+            <a href="./114/index.html" class="btn-version-play">Play Now</a>
+            <a href="downloads.html" class="btn-version-offline">Offline .html</a>
+          </div>
+        </article>
+
+        <!-- 1.7.10 -->
+        <article class="version-item-card">
+          <div class="version-meta-col">
+            <div class="version-header-line">
+              <h3 class="version-heading">Eaglercraft 1.7.10 (u1)</h3>
+              <span class="tag-pill highlight">u1</span>
+              <span class="tag-pill">WASM</span>
+            </div>
+            <p class="version-desc-text">
+              The classic version for PvP, hit detection, and community networks.
+            </p>
+          </div>
+          <div class="version-btns-group">
+            <a href="r1710/" class="btn-version-play">Play Now</a>
+            <a href="downloads.html" class="btn-version-offline">Offline .html</a>
+          </div>
+        </article>
+
+        <!-- 1.4.7 -->
+        <article class="version-item-card">
+          <div class="version-meta-col">
+            <div class="version-header-line">
+              <h3 class="version-heading">Eaglercraft 1.4.7 (u0)</h3>
+              <span class="tag-pill highlight">u0</span>
+              <span class="tag-pill">WASM</span>
+            </div>
+            <p class="version-desc-text">
+              Includes OptiFine HD D5 with classic redstone timing, anvil mechanics, and early texture packs.
+            </p>
+          </div>
+          <div class="version-btns-group">
+            <a href="r147/" class="btn-version-play">Play Now</a>
+            <a href="downloads.html" class="btn-version-offline">Offline .html</a>
+          </div>
+        </article>
+
+        <!-- Beta 1.6.4 -->
+        <article class="version-item-card">
+          <div class="version-meta-col">
+            <div class="version-header-line">
+              <h3 class="version-heading">Beta 1.6.4 (u0)</h3>
+              <span class="tag-pill">JavaScript</span>
+              <span class="tag-pill">Retro 2011</span>
+            </div>
+            <p class="version-desc-text">
+              Classic Beta experience with handheld maps, trapdoors, and early world generator algorithms.
+            </p>
+          </div>
+          <div class="version-btns-group">
+            <a href="beta6/" class="btn-version-play">Play Now</a>
+            <a href="downloads.html" class="btn-version-offline">Offline .html</a>
+          </div>
+        </article>
+
+        <!-- Beta 1.5_01 -->
+        <article class="version-item-card">
+          <div class="version-meta-col">
+            <div class="version-header-line">
+              <h3 class="version-heading">Beta 1.5_01 (u0)</h3>
+              <span class="tag-pill">JavaScript</span>
+              <span class="tag-pill">Retro 2011</span>
+            </div>
+            <p class="version-desc-text">
+              Weather systems, powered rails, classic food eating mechanics, and nostalgia terrain.
+            </p>
+          </div>
+          <div class="version-btns-group">
+            <a href="beta/" class="btn-version-play">Play Now</a>
+            <a href="downloads.html" class="btn-version-offline">Offline .html</a>
+          </div>
+        </article>
+
+        <!-- Alpha 1.0.6_03 -->
+        <article class="version-item-card">
+          <div class="version-meta-col">
+            <div class="version-header-line">
+              <h3 class="version-heading">Alpha 1.0.6_03 (u0)</h3>
+              <span class="tag-pill">JavaScript</span>
+              <span class="tag-pill">Secret Saturday</span>
+            </div>
+            <p class="version-desc-text">
+              2010 Secret Saturday build. Bright neon grass, raw inventory mechanics, and classic voxel world generation.
+            </p>
+          </div>
+          <div class="version-btns-group">
+            <a href="alpha/" class="btn-version-play">Play Now</a>
+            <a href="downloads.html" class="btn-version-offline">Offline .html</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <!-- Footer -->
-    <footer>
-      <div class="footer-links">
+    <footer class="launcher-footer">
+      <div class="footer-links-row">
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Service</a>
         <a href="dmca.html">DMCA Policy</a>
         <a href="getting-started.html">Getting Started</a>
         <a href="servers.html">Servers</a>
         <a href="changelog.html">Changelog</a>
-        <a href="https://github.com/eymenwsmc/playopspt.github.io" target="_blank" rel="noopener">GitHub</a>
+        <a href="downloads.html">Downloads</a>
       </div>
-      <p class="footer-credit">Maintained by eymenwsmc</p>
-      <p>Eagler Versions is an independent open-source port mirror. Not affiliated with Mojang AB or Microsoft.</p>
+      <p>Independent open-source mirror and browser client collection. Not affiliated with Mojang AB or Microsoft.</p>
     </footer>
 
   </div>
 
   <script>
-    function updateVersionAction(select) {
-      const action = document.getElementById('version-action');
-      action.href = select.value;
+    function switchTab(tabId) {
+      document.querySelectorAll('.nav-tab-btn').forEach(btn => {
+        if (btn.getAttribute('data-tab') === tabId) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      document.querySelectorAll('.tab-pane').forEach(pane => {
+        pane.classList.remove('active');
+      });
+
+      const activePane = document.getElementById('pane-' + tabId);
+      if (activePane) {
+        activePane.classList.add('active');
+      }
+
+      window.history.replaceState(null, null, '#' + tabId);
     }
 
-    let activeCategory = 'all';
-    let activeSearch = '';
+    const versionMap = {
+      "./262/index.html?v=292fa5ab221d7e6c": { name: "Eaglercraft 26.2 (0.6-dev)", short: "26.2" },
+      "./120/index.html?v=20260824-5430efd6": { name: "Eaglercraft 1.20.6 (Beta)", short: "1.20.6" },
+      "./114/index.html": { name: "Eaglercraft 1.14.4 (u1)", short: "1.14.4" },
+      "r1710/": { name: "Eaglercraft 1.7.10 (u1)", short: "1.7.10" },
+      "r147/": { name: "Eaglercraft 1.4.7 (u0)", short: "1.4.7" },
+      "beta6/": { name: "Beta 1.6.4 (u0)", short: "Beta 1.6" },
+      "beta/": { name: "Beta 1.5_01 (u0)", short: "Beta 1.5" },
+      "alpha/": { name: "Alpha 1.0.6_03 (u0)", short: "Alpha" }
+    };
 
-    function filterCategory(category, btn) {
-      activeCategory = category;
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    let currentSelectedVersion = "./262/index.html?v=292fa5ab221d7e6c";
+
+    function syncLauncherVersion(url) {
+      if (!url) return;
+      currentSelectedVersion = url;
+      const info = versionMap[url] || { name: "Eaglercraft 26.2 (0.6-dev)", short: "26.2" };
+
+      // Update hero dropdown selector
+      const heroSelect = document.getElementById("launcher-version-select");
+      if (heroSelect && heroSelect.value !== url) heroSelect.value = url;
+
+      // Update hero PLAY button
+      const heroPlay = document.getElementById("hero-play-button");
+      if (heroPlay) heroPlay.href = url;
+
+      // Dynamically update every server connect button with auto-join URL (?server=wss://...) and short label
+      document.querySelectorAll("#servers-container .server-entry-card").forEach(card => {
+        const joinBtn = card.querySelector(".btn-connect-play");
+        if (!joinBtn) return;
+        const serverAddr = card.getAttribute("data-server");
+        if (serverAddr && serverAddr.trim() !== "") {
+          const sep = url.includes("?") ? "&" : "?";
+          joinBtn.href = `${url}${sep}server=${encodeURIComponent(serverAddr.trim())}`;
+          joinBtn.textContent = `Join ${info.short}`;
+        } else {
+          joinBtn.href = url;
+          joinBtn.textContent = `Launch ${info.short}`;
+        }
+      });
+
+      // Save user preference
+      try {
+        localStorage.setItem("eagler_selected_version", url);
+      } catch (e) {}
+    }
+
+    function copyAddress(address, buttonElement) {
+      navigator.clipboard.writeText(address).then(() => {
+        const toast = buttonElement.querySelector('.copied-toast');
+        if (toast) {
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 1600);
+        }
+      }).catch(err => console.error("Copy failed", err));
+    }
+
+    let activeServerFilter = 'all';
+    let activeServerSearch = '';
+
+    function filterServerCategory(cat, btn) {
+      activeServerFilter = cat;
+      document.querySelectorAll('.gamemode-tags-scroller .filter-pill').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      applyFilters();
+      applyServerFilters();
     }
 
-    function searchVersions(query) {
-      activeSearch = query.toLowerCase().trim();
-      applyFilters();
+    function handleServerSearch(query) {
+      activeServerSearch = query.toLowerCase().trim();
+      applyServerFilters();
     }
 
-    function applyFilters() {
-      const cards = document.querySelectorAll('.version-card');
+    function applyServerFilters() {
+      const cards = document.querySelectorAll('#servers-container .server-entry-card');
       cards.forEach(card => {
-        const cat = card.getAttribute('data-category');
-        const keywords = card.getAttribute('data-keywords') || '';
-        const title = card.querySelector('.card-name')?.innerText.toLowerCase() || '';
-        const desc = card.querySelector('.card-desc')?.innerText.toLowerCase() || '';
+        const gamemodes = (card.getAttribute('data-gamemodes') || '').toLowerCase();
+        const keywords = (card.getAttribute('data-keywords') || '').toLowerCase();
+        const title = (card.querySelector('.server-card-name')?.innerText || '').toLowerCase();
+        const desc = (card.querySelector('.server-card-desc')?.innerText || '').toLowerCase();
 
-        const matchesCategory = (activeCategory === 'all' || cat === activeCategory);
-        const matchesSearch = !activeSearch || 
-                              keywords.includes(activeSearch) || 
-                              title.includes(activeSearch) || 
-                              desc.includes(activeSearch);
+        const matchesCat = (activeServerFilter === 'all' || gamemodes.includes(activeServerFilter));
+        const matchesSearch = !activeServerSearch || 
+                              title.includes(activeServerSearch) || 
+                              desc.includes(activeServerSearch) || 
+                              keywords.includes(activeServerSearch);
 
-        if (matchesCategory && matchesSearch) {
+        if (matchesCat && matchesSearch) {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';
         }
       });
     }
+
+    async function pingServerHost(host) {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 6000);
+        const response = await fetch(`https://api.mcstatus.io/v2/status/java/${encodeURIComponent(host)}`, {
+          signal: controller.signal,
+          headers: { 'Accept': 'application/json' }
+        });
+        clearTimeout(timeoutId);
+        if (!response.ok) return null;
+        return await response.json();
+      } catch (e) {
+        return null;
+      }
+    }
+
+    async function updateLiveServerStats() {
+      const cards = document.querySelectorAll('#servers-container .server-entry-card[data-ping-host]');
+      cards.forEach(card => {
+        const host = card.getAttribute('data-ping-host');
+        if (!host) return;
+        const badge = card.querySelector('.server-online-badge');
+        if (!badge) return;
+
+        pingServerHost(host).then(data => {
+          if (data && data.online) {
+            const count = (data.players && typeof data.players.online === 'number') ? data.players.online : null;
+            const text = count !== null ? `${count.toLocaleString()} players online` : 'Online';
+            badge.innerHTML = `<span class="status-dot online" title="Online"></span> <span class="player-count-text">${text}</span>`;
+          } else if (data && data.online === false) {
+            badge.innerHTML = `<span class="status-dot offline" title="Offline"></span> <span class="player-count-text">Offline</span>`;
+          } else {
+            badge.innerHTML = `<span class="status-dot online" title="Online via Relay"></span> <span class="player-count-text">Online via Relay</span>`;
+          }
+        }).catch(() => {
+          badge.innerHTML = `<span class="status-dot online" title="Online via Relay"></span> <span class="player-count-text">Online via Relay</span>`;
+        });
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash && ['play', 'servers', 'installations'].includes(hash)) {
+        switchTab(hash);
+      }
+      try {
+        const savedVer = localStorage.getItem("eagler_selected_version");
+        if (savedVer && versionMap[savedVer]) {
+          syncLauncherVersion(savedVer);
+        } else {
+          syncLauncherVersion(currentSelectedVersion);
+        }
+      } catch (e) {
+        syncLauncherVersion(currentSelectedVersion);
+      }
+
+      // Initial ping and recurring 60s updates
+      updateLiveServerStats();
+      setInterval(updateLiveServerStats, 60000);
+    });
   </script>
 
 </body>
