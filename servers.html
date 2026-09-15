@@ -260,8 +260,8 @@
             <div class="server-title-row">
               <h2 class="server-card-name">Shadowflare SMP</h2>
               <span class="server-online-badge">
-                <span class="status-dot online"></span>
-                <span class="player-count-text">Online via Relay</span>
+                <span class="status-dot pinging"></span>
+                <span class="player-count-text">Pinging live...</span>
               </span>
             </div>
             <p class="server-card-desc">
@@ -289,8 +289,8 @@
             <div class="server-title-row">
               <h2 class="server-card-name">Amethyst Survival</h2>
               <span class="server-online-badge">
-                <span class="status-dot online"></span>
-                <span class="player-count-text">Online via Relay</span>
+                <span class="status-dot pinging"></span>
+                <span class="player-count-text">Pinging live...</span>
               </span>
             </div>
             <p class="server-card-desc">
@@ -430,10 +430,70 @@
       } catch (e) {}
     }
 
-    async function pingServerHost(host) {
+    function pingEaglerWebSocket(wssUrl, timeoutMs = 4500) {
+      return new Promise((resolve) => {
+        let finished = false;
+        let ws = null;
+        const timer = setTimeout(() => {
+          if (!finished) {
+            finished = true;
+            if (ws) {
+              try { ws.close(); } catch (e) {}
+            }
+            resolve(null);
+          }
+        }, timeoutMs);
+
+        try {
+          ws = new WebSocket(wssUrl);
+          ws.binaryType = "arraybuffer";
+          ws.onopen = () => {
+            try {
+              ws.send("Accept: MOTD");
+            } catch (e) {}
+          };
+          ws.onmessage = (evt) => {
+            if (typeof evt.data === "string") {
+              try {
+                const parsed = JSON.parse(evt.data);
+                if (!finished) {
+                  finished = true;
+                  clearTimeout(timer);
+                  try { ws.close(); } catch (e) {}
+                  resolve(parsed);
+                }
+              } catch (e) {}
+            }
+          };
+          ws.onerror = () => {
+            if (!finished) {
+              finished = true;
+              clearTimeout(timer);
+              try { ws.close(); } catch (e) {}
+              resolve(null);
+            }
+          };
+          ws.onclose = () => {
+            if (!finished) {
+              finished = true;
+              clearTimeout(timer);
+              resolve(null);
+            }
+          };
+        } catch (e) {
+          if (!finished) {
+            finished = true;
+            clearTimeout(timer);
+            resolve(null);
+          }
+        }
+      });
+    }
+
+    async function pingFallbackHttpHost(host) {
       try {
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 6000);
+        const timeoutId = setTimeout(() => controller.abort(), 4000);
         const response = await fetch(`https://api.mcstatus.io/v2/status/java/${encodeURIComponent(host)}`, {
           signal: controller.signal,
           headers: { 'Accept': 'application/json' }
@@ -447,25 +507,42 @@
     }
 
     async function updateLiveServerStats() {
-      const cards = document.querySelectorAll('#servers-container .server-entry-card[data-ping-host]');
+      const cards = document.querySelectorAll('#servers-container .server-entry-card');
       cards.forEach(card => {
-        const host = card.getAttribute('data-ping-host');
-        if (!host) return;
+        const serverAddr = (card.getAttribute('data-server') || '').trim();
+        const fallbackHost = card.getAttribute('data-ping-host');
         const badge = card.querySelector('.server-online-badge');
-        if (!badge) return;
+        if (!badge || (!serverAddr && !fallbackHost)) return;
 
-        pingServerHost(host).then(data => {
-          if (data && data.online) {
-            const count = (data.players && typeof data.players.online === 'number') ? data.players.online : null;
-            const text = count !== null ? `${count.toLocaleString()} players online` : 'Online';
+        // Skip non-wss servers (e.g. Discord community only)
+        if (!serverAddr.startsWith('ws://') && !serverAddr.startsWith('wss://')) {
+          return;
+        }
+
+        // 1. Primary: Native Eaglercraft WebSocket ping (Accept: MOTD)
+        pingEaglerWebSocket(serverAddr).then(async (data) => {
+          if (data && data.data && typeof data.data.online === 'number') {
+            const count = data.data.online;
+            const text = `${count.toLocaleString()} players online`;
             badge.innerHTML = `<span class="status-dot online" title="Online"></span> <span class="player-count-text">${text}</span>`;
-          } else if (data && data.online === false) {
-            badge.innerHTML = `<span class="status-dot offline" title="Offline"></span> <span class="player-count-text">Offline</span>`;
-          } else {
-            badge.innerHTML = `<span class="status-dot online" title="Online via Relay"></span> <span class="player-count-text">Online via Relay</span>`;
+            return;
           }
+
+          // 2. Fallback: If WebSocket ping returned no data, check fallback host if configured
+          if (fallbackHost) {
+            const httpData = await pingFallbackHttpHost(fallbackHost);
+            if (httpData && httpData.online) {
+              const count = (httpData.players && typeof httpData.players.online === 'number') ? httpData.players.online : null;
+              const text = count !== null ? `${count.toLocaleString()} players online` : 'Online';
+              badge.innerHTML = `<span class="status-dot online" title="Online"></span> <span class="player-count-text">${text}</span>`;
+              return;
+            }
+          }
+
+          // 3. If both fail or server unreachable
+          badge.innerHTML = `<span class="status-dot offline" title="Offline"></span> <span class="player-count-text">Offline</span>`;
         }).catch(() => {
-          badge.innerHTML = `<span class="status-dot online" title="Online via Relay"></span> <span class="player-count-text">Online via Relay</span>`;
+          badge.innerHTML = `<span class="status-dot offline" title="Offline"></span> <span class="player-count-text">Offline</span>`;
         });
       });
     }

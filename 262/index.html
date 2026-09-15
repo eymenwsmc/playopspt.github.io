@@ -433,7 +433,7 @@
 		var q = window.location.search;
 		if((typeof q === "string") && q[0] === "?" && (typeof window.URLSearchParams !== "undefined")) {
 			var searchParams = new window.URLSearchParams(q);
-			var s = searchParams.get("server");
+			var s = searchParams.get("server") || searchParams.get("joinServer");
 			if(s) window.eaglercraftXOpts.joinServer = s;
 		}
 
