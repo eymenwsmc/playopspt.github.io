@@ -227,13 +227,13 @@
       <div class="server-list-grid" id="servers-container">
 
         <!-- Server: FreshYogurt SMP (Top Server) -->
-        <article class="server-entry-card featured-server" data-server="wss://eaglermc.freshyogurt.org" data-gamemodes="smp economy enchants" data-keywords="freshyogurt fresh yogurt smp economy custom terrain structures spawners enchants discord 26.2 fair_human random_yogurt eaglermc.freshyogurt.org">
+        <article class="server-entry-card featured-server" data-server="wss://eaglermc.freshyogurt.org" data-ping-host="mc.freshyogurt.org" data-gamemodes="smp economy enchants" data-keywords="freshyogurt fresh yogurt smp economy custom terrain structures spawners enchants discord 26.2 fair_human random_yogurt eaglermc.freshyogurt.org mc.freshyogurt.org">
           <div class="server-main-info">
             <div class="server-title-row">
               <h3 class="server-card-name">FreshYogurt SMP</h3>
               <span class="server-online-badge">
-                <span class="status-dot online"></span>
-                <span class="player-count-text">Online &middot; 35+ Members</span>
+                <span class="status-dot pinging"></span>
+                <span class="player-count-text">Pinging live...</span>
               </span>
             </div>
             <p class="server-card-desc">
@@ -799,7 +799,7 @@
         pingServerHost(host).then(data => {
           if (data && data.online) {
             const count = (data.players && typeof data.players.online === 'number') ? data.players.online : null;
-            const text = count !== null ? `${count.toLocaleString()} players online` : 'Online';
+            const text = count !== null ? `${count.toLocaleString()} player${count === 1 ? '' : 's'} online` : 'Online';
             badge.innerHTML = `<span class="status-dot online" title="Online"></span> <span class="player-count-text">${text}</span>`;
           } else if (data && data.online === false) {
             badge.innerHTML = `<span class="status-dot offline" title="Offline"></span> <span class="player-count-text">Offline</span>`;

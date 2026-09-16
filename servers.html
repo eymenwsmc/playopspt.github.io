@@ -109,15 +109,15 @@
       <div class="server-list-grid" id="servers-container">
 
         <!-- Server: FreshYogurt SMP (Top Server) -->
-        <article class="server-entry-card featured-server" data-server="wss://eaglermc.freshyogurt.org"
+        <article class="server-entry-card featured-server" data-server="wss://eaglermc.freshyogurt.org" data-ping-host="mc.freshyogurt.org"
           data-gamemodes="smp economy enchants"
-          data-keywords="freshyogurt fresh yogurt smp economy custom terrain structures spawners enchants discord 26.2 fair_human random_yogurt eaglermc.freshyogurt.org">
+          data-keywords="freshyogurt fresh yogurt smp economy custom terrain structures spawners enchants discord 26.2 fair_human random_yogurt eaglermc.freshyogurt.org mc.freshyogurt.org">
           <div class="server-main-info">
             <div class="server-title-row">
               <h2 class="server-card-name">FreshYogurt SMP</h2>
               <span class="server-online-badge">
-                <span class="status-dot online"></span>
-                <span class="player-count-text">Online &middot; 35+ Members</span>
+                <span class="status-dot pinging"></span>
+                <span class="player-count-text">Pinging live...</span>
               </span>
             </div>
             <p class="server-card-desc">
@@ -612,12 +612,8 @@
             badge.innerHTML = `<span class="status-dot online" title="Online"></span> <span class="player-count-text">${text}</span>`;
             return;
           }
-          if (data && data.online) {
-            badge.innerHTML = `<span class="status-dot online" title="Online"></span> <span class="player-count-text">Online</span>`;
-            return;
-          }
 
-          // 2. Fallback: If WebSocket ping returned no data, check fallback host if configured
+          // 2. Fallback: If WebSocket ping returned no player count, check fallback host if configured
           if (fallbackHost) {
             const httpData = await pingFallbackHttpHost(fallbackHost);
             if (httpData && httpData.online) {
@@ -626,6 +622,11 @@
               badge.innerHTML = `<span class="status-dot online" title="Online"></span> <span class="player-count-text">${text}</span>`;
               return;
             }
+          }
+
+          if (data && data.online) {
+            badge.innerHTML = `<span class="status-dot online" title="Online"></span> <span class="player-count-text">Online</span>`;
+            return;
           }
 
           // 3. If both fail or server unreachable
