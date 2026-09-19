@@ -1083,14 +1083,27 @@ body {
 }
 
 /* Changelog Components */
-.changelog-card {
+.log-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.changelog-card,
+.log-entry {
   background: var(--mc-panel);
   border: 2px solid var(--mc-border);
   padding: 24px;
   margin-bottom: 24px;
 }
 
-.changelog-header {
+.changelog-card:hover,
+.log-entry:hover {
+  border-color: var(--mc-border-light);
+}
+
+.changelog-header,
+.log-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1101,24 +1114,56 @@ body {
   padding-bottom: 10px;
 }
 
-.changelog-title {
-  font-size: 1rem;
+.log-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.changelog-title,
+.log-title {
+  font-family: 'Minecraftia', monospace;
+  font-size: 0.95rem;
   color: #ffffff;
   text-shadow: 2px 2px 0px #000;
 }
 
-.changelog-date {
+.changelog-date,
+.log-date {
   font-size: 0.72rem;
   color: var(--mc-text-dim);
 }
 
-.changelog-list {
+.log-desc {
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--mc-text-muted);
+  margin-bottom: 14px;
+}
+
+.sub-log-section {
+  margin-top: 14px;
+}
+
+.sub-log-title {
+  font-family: 'Minecraftia', monospace;
+  font-size: 0.72rem;
+  color: var(--mc-green);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.changelog-list,
+.sub-log-section ul {
   padding-left: 20px;
   font-size: 0.78rem;
   line-height: 1.8;
   color: var(--mc-text-muted);
 }
 
-.changelog-list li {
+.changelog-list li,
+.sub-log-section ul li {
   margin-bottom: 6px;
 }
