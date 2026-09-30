@@ -3,13 +3,17 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="refresh" content="0;url=https://eaglercraft-26-2-u1-cdn.u2471966200.workers.dev/eaglercraft-26.2-u1.html">
+	<meta http-equiv="refresh" content="0;url=https://eaglercraft-26-2-u1-cdn.u2471966200.workers.dev/eaglercraft-26.2-u1.html?v=u1-20260930">
 	<title>Eaglercraft 26.2 (u1)</title>
 	<script>
-		window.location.replace("https://eaglercraft-26-2-u1-cdn.u2471966200.workers.dev/eaglercraft-26.2-u1.html" + window.location.search + window.location.hash);
+		const client = new URL("https://eaglercraft-26-2-u1-cdn.u2471966200.workers.dev/eaglercraft-26.2-u1.html");
+		client.search = window.location.search;
+		client.searchParams.set("v", "u1-20260930");
+		client.hash = window.location.hash;
+		window.location.replace(client.href);
 	</script>
 </head>
 <body>
-	<p>Loading Eaglercraft 26.2 (u1)… <a href="https://eaglercraft-26-2-u1-cdn.u2471966200.workers.dev/eaglercraft-26.2-u1.html">Continue to the client</a></p>
+	<p>Loading Eaglercraft 26.2 (u1)… <a href="https://eaglercraft-26-2-u1-cdn.u2471966200.workers.dev/eaglercraft-26.2-u1.html?v=u1-20260930">Continue to the client</a></p>
 </body>
 </html>
