@@ -895,6 +895,7 @@ body {
 
 
 /* Footer */
+footer,
 .launcher-footer {
   border-top: 2px solid var(--mc-border);
   padding: 32px 0;
@@ -906,6 +907,7 @@ body {
   line-height: 1.8;
 }
 
+.footer-links,
 .footer-links-row {
   display: flex;
   justify-content: center;
@@ -914,16 +916,19 @@ body {
   flex-wrap: wrap;
 }
 
+.footer-links a,
 .footer-links-row a {
   color: var(--mc-text-muted);
   text-decoration: none;
 }
 
+.footer-links a:hover,
 .footer-links-row a:hover {
   color: var(--mc-green);
 }
 
-/* Standalone Pages Helpers */
+/* Document & Policy Panels (DMCA, Privacy, Terms) */
+.doc-panel,
 .standalone-content {
   background: var(--mc-panel);
   border: 2px solid var(--mc-border);
@@ -931,6 +936,26 @@ body {
   margin-bottom: 32px;
 }
 
+.doc-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  background: var(--mc-surface);
+  border: 1px solid var(--mc-border);
+  font-family: 'Minecraftia', monospace;
+  font-size: 0.68rem;
+  color: var(--mc-green);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.doc-meta {
+  font-size: 0.72rem;
+  color: var(--mc-text-dim);
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 0px #000;
+}
+
+.doc-panel h1,
 .standalone-content h1 {
   font-size: 1.4rem;
   margin-bottom: 16px;
@@ -938,18 +963,199 @@ body {
   text-shadow: 2px 2px 0px #000;
 }
 
+.doc-panel h2,
 .standalone-content h2 {
-  font-size: 1.1rem;
-  margin: 20px 0 10px;
+  font-family: 'Minecraftia', monospace;
+  font-size: 0.95rem;
   color: #fff;
-  text-shadow: 1px 1px 0px #000;
+  text-shadow: 2px 2px 0px #000;
+  margin-top: 26px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--mc-border);
 }
 
-.standalone-content p, .standalone-content li {
+.doc-panel h2:first-of-type,
+.standalone-content h2:first-of-type {
+  margin-top: 0;
+}
+
+.doc-panel p,
+.doc-panel li,
+.standalone-content p,
+.standalone-content li {
   font-size: 0.78rem;
   color: var(--mc-text-muted);
   line-height: 1.8;
   text-shadow: 1px 1px 0px #000;
+  margin-bottom: 12px;
+}
+
+.doc-panel ul,
+.doc-panel ol,
+.standalone-content ul,
+.standalone-content ol {
+  padding-left: 24px;
+  margin-bottom: 18px;
+}
+
+.doc-panel li,
+.standalone-content li {
+  margin-bottom: 6px;
+}
+
+.doc-panel a,
+.standalone-content a {
+  color: var(--mc-green);
+  text-decoration: none;
+}
+
+.doc-panel a:hover,
+.standalone-content a:hover {
+  text-decoration: underline;
+}
+
+.doc-panel code,
+.standalone-content code {
+  font-family: 'JetBrains Mono', monospace;
+  background: #202020;
+  border: 1px solid var(--mc-border);
+  padding: 2px 6px;
+  color: var(--mc-green);
+  font-size: 0.72rem;
+}
+
+.contact-box,
+.alert-box {
+  background: var(--mc-surface);
+  border: 2px solid var(--mc-border);
+  padding: 18px 20px;
+  margin: 20px 0;
+  font-size: 0.78rem;
+  line-height: 1.8;
+}
+
+.alert-box {
+  border-left: 4px solid var(--mc-green);
+}
+
+.contact-box p,
+.alert-box p {
+  margin-bottom: 8px;
+  color: var(--mc-text-muted);
+}
+
+.contact-box p:last-child,
+.alert-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* Guide Page Components */
+.guide-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.guide-card {
+  background: var(--mc-panel);
+  border: 2px solid var(--mc-border);
+  padding: 24px;
+}
+
+.guide-card:hover {
+  border-color: var(--mc-border-light);
+}
+
+.guide-card h2 {
+  font-family: 'Minecraftia', monospace;
+  font-size: 0.95rem;
+  color: #ffffff;
+  text-shadow: 2px 2px 0px #000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: #202020;
+  border: 2px outset var(--mc-green-border);
+  color: var(--mc-green);
+  font-family: 'Minecraftia', monospace;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-shadow: none;
+}
+
+.guide-card p,
+.guide-card li {
+  font-size: 0.78rem;
+  line-height: 1.8;
+  color: var(--mc-text-muted);
+  text-shadow: 1px 1px 0px #000;
+}
+
+.guide-card ul,
+.guide-card ol {
+  padding-left: 20px;
+  margin: 12px 0;
+}
+
+.guide-card li {
+  margin-bottom: 6px;
+}
+
+.guide-card code {
+  font-family: 'JetBrains Mono', monospace;
+  background: #202020;
+  border: 1px solid var(--mc-border);
+  padding: 2px 6px;
+  color: var(--mc-green);
+  font-size: 0.72rem;
+}
+
+.tips-box {
+  background: var(--mc-surface);
+  border: 2px solid var(--mc-border);
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 0.78rem;
+  line-height: 1.8;
+  color: var(--mc-text-muted);
+}
+
+.btn-action-hub {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--mc-green);
+  color: #121212;
+  font-family: 'Minecraftia', monospace;
+  font-size: 0.78rem;
+  font-weight: bold;
+  padding: 10px 18px;
+  border: 2px outset var(--mc-green-border);
+  text-decoration: none;
+  margin-top: 14px;
+  cursor: pointer;
+  text-shadow: none;
+}
+
+.btn-action-hub:hover {
+  background: var(--mc-green-hover);
+  color: #000;
+}
+
+.btn-action-hub:active {
+  border-style: inset;
 }
 
 @media (max-width: 768px) {
@@ -1080,6 +1286,87 @@ body {
 .download-arrow {
   font-size: 14px;
   color: var(--mc-green);
+}
+
+.download-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.download-btn .progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  background: rgba(0, 212, 74, 0.25);
+  transition: width 0.2s ease;
+  pointer-events: none;
+}
+
+details {
+  background: var(--mc-surface);
+  border: 2px solid var(--mc-border);
+  padding: 14px 18px;
+  margin-top: 20px;
+}
+
+summary {
+  font-family: 'Minecraftia', monospace;
+  font-size: 0.78rem;
+  color: var(--mc-green);
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  text-shadow: 1px 1px 0px #000;
+}
+
+.archived-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.info-card {
+  background: var(--mc-surface);
+  border: 2px solid var(--mc-border);
+  padding: 18px 20px;
+  margin-top: 24px;
+}
+
+.info-card h3 {
+  font-family: 'Minecraftia', monospace;
+  font-size: 0.85rem;
+  color: #fff;
+  text-shadow: 1px 1px 0px #000;
+  margin-bottom: 8px;
+}
+
+.info-card p {
+  font-size: 0.78rem;
+  line-height: 1.8;
+  color: var(--mc-text-muted);
+  text-shadow: 1px 1px 0px #000;
+  margin: 0;
+}
+
+.info-card code {
+  font-family: 'JetBrains Mono', monospace;
+  background: #202020;
+  border: 1px solid var(--mc-border);
+  padding: 2px 6px;
+  color: var(--mc-green);
+  font-size: 0.72rem;
+}
+
+.storage-note {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--mc-text-dim);
+  margin-top: 16px;
+  margin-bottom: 24px;
+  text-shadow: 1px 1px 0px #000;
 }
 
 /* Changelog Components */

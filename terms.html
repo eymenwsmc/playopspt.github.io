@@ -15,194 +15,56 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="launcher-theme.css">
+
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1739607505559413" crossorigin="anonymous"></script>
-
-  <style>
-    :root {
-      --bg-dark: #0b0f17;
-      --bg-surface: #111722;
-      --bg-card: #161f2e;
-      --border-subtle: #243044;
-      --border-focus: #38bdf8;
-      --accent-color: #38bdf8;
-      --accent-btn: #0284c7;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
-      --radius-sm: 4px;
-      --radius-md: 8px;
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-      line-height: 1.7;
-      min-height: 100vh;
-    }
-
-    .container {
-      max-width: 880px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 84px;
-      border-bottom: 1px solid var(--border-subtle);
-      margin-bottom: 48px;
-    }
-
-    .brand {
-      text-decoration: none;
-      color: var(--text-main);
-      font-family: 'Outfit', sans-serif;
-      font-weight: 800;
-      font-size: 21px;
-    }
-    .brand span { color: var(--accent-color); }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      list-style: none;
-    }
-    .nav-links a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 600;
-    }
-    .nav-links a:hover { color: var(--text-main); }
-
-    .doc-header {
-      margin-bottom: 40px;
-    }
-    .doc-tag {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: var(--radius-sm);
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--accent-color);
-      margin-bottom: 14px;
-      text-transform: uppercase;
-    }
-    h1 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 36px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
-    }
-    .doc-meta {
-      font-size: 13px;
-      color: var(--text-dim);
-    }
-
-    .doc-body {
-      background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 36px;
-      margin-bottom: 56px;
-    }
-
-    h2 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-top: 32px;
-      margin-bottom: 12px;
-    }
-    h2:first-of-type { margin-top: 0; }
-
-    p {
-      color: var(--text-muted);
-      font-size: 15px;
-      margin-bottom: 16px;
-    }
-
-    ul {
-      color: var(--text-muted);
-      font-size: 15px;
-      padding-left: 24px;
-      margin-bottom: 20px;
-    }
-    li { margin-bottom: 8px; }
-
-    a {
-      color: var(--accent-color);
-      text-decoration: none;
-    }
-    a:hover { text-decoration: underline; }
-
-    .alert-box {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
-      border-left: 4px solid var(--accent-color);
-      padding: 16px 20px;
-      border-radius: var(--radius-sm);
-      margin: 20px 0;
-    }
-    .alert-box p { margin: 0; }
-
-    footer {
-      border-top: 1px solid var(--border-subtle);
-      padding: 40px 0;
-      text-align: center;
-      font-size: 13px;
-      color: var(--text-dim);
-    }
-    .footer-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 12px;
-    }
-    .footer-links a { color: var(--text-muted); }
-  </style>
 </head>
 <body>
 
-  <div class="container">
+  <div class="launcher-frame">
 
-    <header>
-      <nav class="navbar">
-        <a class="brand" href="index.html">EAGLER<span>VERSIONS</span></a>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="getting-started.html">Getting Started</a></li>
-          <li><a href="servers.html">Servers</a></li>
-          <li><a href="changelog.html">Changelog</a></li>
-          <li><a href="downloads.html">Downloads</a></li>
-        </ul>
-      </nav>
+    <header class="launcher-titlebar">
+      <a href="index.html" class="brand">
+        EAGLER<span>VERSIONS</span>
+      </a>
+
+      <div class="header-quick-links">
+        <a href="https://discord.gg/wsAYH987U" target="_blank" rel="noopener noreferrer" class="btn-discord">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg>
+          <span>Discord Community</span>
+        </a>
+        <a href="https://github.com/eymenwsmc/playopspt.github.io" target="_blank" rel="noopener noreferrer" class="btn-header-ghost">
+          GitHub
+        </a>
+      </div>
     </header>
 
+    <nav class="launcher-nav">
+      <a href="index.html#play" class="nav-tab-btn">PLAY</a>
+      <a href="servers.html" class="nav-tab-btn">COMMUNITY SERVERS</a>
+      <a href="downloads.html" class="nav-tab-btn">INSTALLATIONS</a>
+      <a href="changelog.html" class="nav-tab-btn">PATCH NOTES</a>
+      <a href="getting-started.html" class="nav-tab-btn">GUIDE</a>
+    </nav>
+
     <main>
-      <div class="doc-header">
-        <span class="doc-tag">Legal & Compliance</span>
-        <h1>Terms of Service</h1>
-        <p class="doc-meta">Last Updated: August 2026 · Effective Immediately</p>
+      <div class="section-header-row">
+        <div>
+          <h1 class="section-title-mc">Terms of Service</h1>
+          <p class="section-subtext">Last Updated: August 2026 · Effective Immediately</p>
+        </div>
       </div>
 
-      <article class="doc-body">
+      <article class="doc-panel">
+        <span class="doc-tag">Legal &amp; Compliance</span>
+
         <h2>1. Acceptance of Terms</h2>
         <p>
           By accessing and using this website (Eagler Versions, hosted at eymenwsmc.site and playopspt.github.io), you agree to comply with and be bound by these Terms of Service. If you do not agree with any part of these terms, please do not use our website.
         </p>
 
-        <h2>2. Nature of the Service & Educational Disclaimer</h2>
+        <h2>2. Nature of the Service &amp; Educational Disclaimer</h2>
         <p>
           Eagler Versions provides open-source browser builds and standalone HTML mirrors compiled for educational, research, and accessibility purposes. The WebAssembly and JavaScript ports demonstrate browser-based virtual machine execution, TeaVM transpilation, and WebGL rendering capabilities.
         </p>
@@ -238,12 +100,16 @@
       </article>
     </main>
 
-    <footer>
-      <div class="footer-links">
+    <footer class="launcher-footer">
+      <div class="footer-links-row">
+        <a href="index.html#play">Home</a>
+        <a href="servers.html">Servers</a>
+        <a href="downloads.html">Installations</a>
+        <a href="changelog.html">Patch Notes</a>
+        <a href="getting-started.html">Guide</a>
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Service</a>
         <a href="dmca.html">DMCA Policy</a>
-        <a href="https://github.com/eymenwsmc/playopspt.github.io" target="_blank" rel="noopener">GitHub</a>
       </div>
       <p>Eagler Versions is an independent open-source mirror project. Not affiliated with Mojang AB or Microsoft.</p>
     </footer>
