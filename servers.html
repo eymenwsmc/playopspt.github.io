@@ -83,7 +83,7 @@
             <select id="servers-version-select"
               style="background: transparent; border: none; color: #ffffff; font-family: 'Minecraftia', monospace; font-size: 0.75rem; cursor: pointer; outline: none;"
               onchange="syncLauncherVersion(this.value)">
-              <option value="./262/index.html?v=u1" selected>Eaglercraft 26.2 (u1)</option>
+              <option value="./262/index.html?v=u2" selected>Eaglercraft 26.2 (u2)</option>
               <option value="./120/index.html?v=20260824-5430efd6">Eaglercraft 1.20.6 (Beta)</option>
               <option value="./114/index.html">Eaglercraft 1.14.4 (u1)</option>
               <option value="r1710/">Eaglercraft 1.7.10 (u1)</option>
@@ -146,7 +146,7 @@
               </svg>
               <span>wss://eaglermc.freshyogurt.org</span>
             </button>
-            <a href="./262/index.html?v=u1" class="btn-connect-play">Launch 26.2</a>
+            <a href="./262/index.html?v=u2" class="btn-connect-play">Launch 26.2</a>
           </div>
         </article>
 
@@ -183,7 +183,7 @@
               </svg>
               <span>wss://fkas.online</span>
             </button>
-            <a href="./262/index.html?v=u1" class="btn-connect-play">Launch 26.2</a>
+            <a href="./262/index.html?v=u2" class="btn-connect-play">Launch 26.2</a>
           </div>
         </article>
 
@@ -219,7 +219,7 @@
               </svg>
               <span>wss://play.strengthmc.xyz</span>
             </button>
-            <a href="./262/index.html?v=u1" class="btn-connect-play">Launch 26.2</a>
+            <a href="./262/index.html?v=u2" class="btn-connect-play">Launch 26.2</a>
           </div>
         </article>
 
@@ -254,7 +254,7 @@
               </svg>
               <span>wss://arch.mc</span>
             </button>
-            <a href="./262/index.html?v=u1" class="btn-connect-play">Launch 26.2</a>
+            <a href="./262/index.html?v=u2" class="btn-connect-play">Launch 26.2</a>
           </div>
         </article>
 
@@ -288,7 +288,7 @@
               </svg>
               <span>wss://zentic.cc</span>
             </button>
-            <a href="./262/index.html?v=u1" class="btn-connect-play">Launch 26.2</a>
+            <a href="./262/index.html?v=u2" class="btn-connect-play">Launch 26.2</a>
           </div>
         </article>
 
@@ -322,7 +322,7 @@
               </svg>
               <span>wss://shadowflare.pages.dev</span>
             </button>
-            <a href="./262/index.html?v=u1" class="btn-connect-play">Launch 26.2</a>
+            <a href="./262/index.html?v=u2" class="btn-connect-play">Launch 26.2</a>
           </div>
         </article>
 
@@ -357,7 +357,7 @@
               </svg>
               <span>wss://amethyst.craft.gg</span>
             </button>
-            <a href="./262/index.html?v=u1" class="btn-connect-play">Launch 26.2</a>
+            <a href="./262/index.html?v=u2" class="btn-connect-play">Launch 26.2</a>
           </div>
         </article>
 
@@ -442,7 +442,7 @@
     }
 
     const versionMap = {
-      "./262/index.html?v=u1": { name: "Eaglercraft 26.2 (u1)", short: "26.2" },
+      "./262/index.html?v=u2": { name: "Eaglercraft 26.2 (u2)", short: "26.2" },
       "./120/index.html?v=20260824-5430efd6": { name: "Eaglercraft 1.20.6 (Beta)", short: "1.20.6" },
       "./114/index.html": { name: "Eaglercraft 1.14.4 (u1)", short: "1.14.4" },
       "r1710/": { name: "Eaglercraft 1.7.10 (u1)", short: "1.7.10" },
@@ -452,12 +452,12 @@
       "alpha/": { name: "Alpha 1.0.6_03 (u0)", short: "Alpha" }
     };
 
-    let currentSelectedVersion = "./262/index.html?v=u1";
+    let currentSelectedVersion = "./262/index.html?v=u2";
 
     function syncLauncherVersion(url) {
       if (!url) return;
       currentSelectedVersion = url;
-      const info = versionMap[url] || { name: "Eaglercraft 26.2 (u1)", short: "26.2" };
+      const info = versionMap[url] || { name: "Eaglercraft 26.2 (u2)", short: "26.2" };
 
       const select = document.getElementById("servers-version-select");
       if (select && select.value !== url) select.value = url;
